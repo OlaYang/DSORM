@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<apply xmlns="http://www.w3school.com.cn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3school.com.cn file:loginRegister.xml">  
+  <registerName></registerName>  
+  <province></province>  
+  <city></city>  
+  <!-- <district></district> -->  
+  <budget></budget>
+  <decorateDate></decorateDate>
+  <phone></phone>
+</apply>

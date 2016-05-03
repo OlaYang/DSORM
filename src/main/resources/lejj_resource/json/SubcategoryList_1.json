@@ -1,0 +1,63 @@
+{
+	"subCategates": [{
+		"catId": 1,
+		"keywords": "卧室",
+		"catDesc": "卧室",
+		"subCategates": [{
+			"catId": 22,
+			"catName": "床",
+			"keywords": "床",
+			"catDesc": "床",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432761655761551844.png"
+		},
+		{
+			"catId": 23,
+			"catName": "床头柜",
+			"keywords": "床头柜",
+			"catDesc": "床头柜",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432761749173522426.png"
+		},
+		{
+			"catId": 24,
+			"catName": "床垫",
+			"keywords": "床垫",
+			"catDesc": "床垫",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432761820174448727.png"
+		},
+		{
+			"catId": 25,
+			"catName": "衣柜",
+			"keywords": "衣柜",
+			"catDesc": "衣柜",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432761912019534595.png"
+		},
+		{
+			"catId": 26,
+			"catName": "妆台/妆凳",
+			"keywords": "妆台/妆凳",
+			"catDesc": "妆台/妆凳",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432761984907753439.png"
+		},
+		{
+			"catId": 27,
+			"catName": "斗柜",
+			"keywords": "斗柜",
+			"catDesc": "斗柜",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432762056619851344.png"
+		},
+		{
+			"catId": 28,
+			"catName": "床尾凳",
+			"keywords": "床尾凳",
+			"catDesc": "床尾凳",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432762110936362499.png"
+		},
+		{
+			"catId": 29,
+			"catName": "穿衣镜",
+			"keywords": "穿衣镜",
+			"catDesc": "穿衣镜",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432762168784422038.png"
+		}]
+	}]
+}

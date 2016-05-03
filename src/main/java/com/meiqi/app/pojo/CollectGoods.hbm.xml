@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年4月7日 15:13:08 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.CollectGoods" table="ecs_collect_goods"
+		mutable="true" dynamic-update="false" dynamic-insert="false"
+		select-before-update="false" lazy="true" abstract="false">
+		<id name="favoriteId">
+			<column name="rec_id" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+			<generator class="native"></generator>
+		</id>
+		<property name="userId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="user_id" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+		</property>
+		<many-to-one name="goods" class="com.meiqi.app.pojo.Goods"
+			unique="true" lazy="false" outer-join="false" update="false" insert="true">
+			<column name="goods_id" sql-type="bigint" not-null="false" />
+		</many-to-one>
+		<property name="addTime" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="add_time" sql-type="int(11)" not-null="true"
+				length="11" />
+		</property>
+		<property name="isAttention" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="is_attention" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+	</class>
+</hibernate-mapping>

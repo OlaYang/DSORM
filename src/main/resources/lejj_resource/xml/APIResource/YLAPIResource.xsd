@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+<xs:element name="root">		
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="version" type="xs:string" />
+				<xs:element name="host" type="xs:string"></xs:element>
+				<xs:element name="timeout" type="xs:string"></xs:element>
+				<xs:element name="api" type="API" maxOccurs="unbounded" minOccurs="2"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+    <xs:complexType name="API">
+    	<xs:sequence>
+    		<xs:element name="req" type="REQ"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="REQ">
+    	<xs:sequence>
+    		<xs:element name="name" type="xs:string"/>
+    		<xs:element name="server" type="xs:string"/>
+    		<xs:element name="parameters"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+ 	<xs:complexType name="attribute">   	
+ 		 <xs:attributeGroup ref="attribute"/>
+    </xs:complexType>  
+
+    <xs:attributeGroup name="attribute">
+    	<xs:attribute name="optional" type="xs:string"></xs:attribute>
+    	<xs:attribute name="ref" type="xs:string"></xs:attribute>
+    </xs:attributeGroup>
+</xs:schema>

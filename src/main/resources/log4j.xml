@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log4j:configuration debug="true">
+    <appender name="stdout"
+        class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+    </appender>
+    <appender name="error"
+        class="org.apache.log4j.RollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] (%F:%L) %-5p %c - %m%n" />
+        </layout>
+        <param name="MaxBackupIndex" value="5" />  
+        <param name="MaxFileSize" value="5MB" />  
+        <param name="File" value="${catalina.home}/DSORM/logs/error.log" />
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">  
+            <param name="LevelMin" value="ERROR" />  
+            <param name="LevelMax" value="ERROR" />  
+        </filter>  
+    </appender>
+    
+     <appender name="catalinaAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] (%F:%L) %-5p %c - %m%n" />
+        </layout>
+        <param name="MaxBackupIndex" value="2" />  
+        <param name="MaxFileSize" value="5MB" />  
+        <param name="File" value="${catalina.home}/DSORM/logs/catalina.out" />
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">  
+            <param name="LevelMin" value="ERROR" />  
+            <param name="LevelMax" value="ERROR" />  
+        </filter>  
+     </appender>
+    
+    <root>
+        <priority value="info" />
+        <appender-ref ref="error" />
+        <appender-ref ref="stdout" />
+        <appender-ref ref="requestAppender" />
+        <appender-ref ref="catalinaAppender" />
+    </root>
+    
+     <appender name="requestAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+         <param name="MaxBackupIndex" value="2" />  
+        <param name="MaxFileSize" value="5MB" />         
+        <param name="File" value="${catalina.home}/DSORM/logs/request.log" />
+    </appender>
+    <appender name="request-async" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="requestAppender"/>
+    </appender>
+     <logger name="request" additivity="false">
+         <priority value="info" />
+         <appender-ref ref="request-async" />
+    </logger>
+    
+    
+     <appender name="crmAppender"
+        class="org.apache.log4j.DailyRollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+        <param name="DatePattern" value="'.'yyyy-MM-dd" />        
+        <param name="File" value="${catalina.home}/DSORM/logs/crm.log" />
+    </appender>
+    <appender name="crm-async" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="crmAppender"/>
+    </appender>
+     <logger name="crm" additivity="false">
+         <priority value="info" />
+         <appender-ref ref="crm-async" />
+    </logger>
+    
+    <appender name="slowAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+         <param name="MaxBackupIndex" value="5" />  
+        <param name="MaxFileSize" value="5MB" />         
+        <param name="File" value="${catalina.home}/DSORM/logs/slow.log" />
+    </appender>
+    <appender name="slow-async" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="slowAppender"/>
+    </appender>
+     <logger name="slow" additivity="false">
+         <priority value="info" />
+         <appender-ref ref="slow-async" />
+    </logger>
+    
+    <appender name="ipadAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+         <param name="MaxBackupIndex" value="5" />  
+        <param name="MaxFileSize" value="5MB" />         
+        <param name="File" value="${catalina.home}/DSORM/logs/ipad.log" />
+    </appender>
+    <appender name="ipad-async" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="ipadAppender"/>
+    </appender>
+     <logger name="ipad" additivity="false">
+         <priority value="info" />
+         <appender-ref ref="ipad-async" />
+    </logger>
+    
+    
+    <appender name="payAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+         <param name="MaxBackupIndex" value="5" />  
+        <param name="MaxFileSize" value="5MB" />         
+        <param name="File" value="${catalina.home}/DSORM/logs/pay.log" />
+    </appender>
+    <appender name="pay-async" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="payAppender"/>
+    </appender>
+     <logger name="pay" additivity="false">
+         <priority value="info" />
+         <appender-ref ref="pay-async" />
+    </logger>
+    
+    <appender name="clearcacheAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+         <param name="MaxBackupIndex" value="1" />  
+        <param name="MaxFileSize" value="5MB" />         
+        <param name="File" value="${catalina.home}/DSORM/logs/clearcache.log" />
+    </appender>
+    <appender name="clearcache-async" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="clearcacheAppender"/>
+    </appender>
+     <logger name="clearcache" additivity="false">
+         <priority value="info" />
+         <appender-ref ref="clearcache-async" />
+    </logger>
+    
+     <appender name="loginAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+         <param name="MaxBackupIndex" value="5" />  
+        <param name="MaxFileSize" value="5MB" />         
+        <param name="File" value="${catalina.home}/DSORM/logs/login.log" />
+    </appender>
+    <appender name="login-async" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="loginAppender"/>
+    </appender>
+     <logger name="login" additivity="false">
+         <priority value="info" />
+         <appender-ref ref="login-async" />
+    </logger>
+    
+    <appender name="ipAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+         <param name="MaxBackupIndex" value="1" />  
+        <param name="MaxFileSize" value="5MB" />         
+        <param name="File" value="${catalina.home}/DSORM/logs/ip.log" />
+    </appender>
+    <appender name="ip-async" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="ipAppender"/>
+    </appender>
+     <logger name="ip" additivity="false">
+         <priority value="info" />
+         <appender-ref ref="ip-async" />
+    </logger>
+    
+     <appender name="solrAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+        <param name="MaxBackupIndex" value="2" />  
+        <param name="MaxFileSize" value="5MB" />        
+        <param name="File" value="${catalina.home}/DSORM/logs/solr.log" />
+    </appender>
+    <appender name="solr-async" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="solrAppender"/>
+    </appender>
+     <logger name="solr" additivity="false">
+         <priority value="info" />
+         <appender-ref ref="solr-async" />
+    </logger>
+    
+    
+    <appender name="smsAppender"
+        class="org.apache.log4j.DailyRollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+        <param name="DatePattern" value="'.'yyyy-MM-dd" />        
+        <param name="File" value="${catalina.home}/DSORM/logs/sms.log" />
+    </appender>
+    <appender name="sms-async" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="smsAppender"/>
+    </appender>
+     <logger name="sms" additivity="false">
+         <priority value="info" />
+         <appender-ref ref="sms-async" />
+    </logger>
+    
+    
+     <appender name="articleAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+        <param name="MaxBackupIndex" value="1" />  
+        <param name="MaxFileSize" value="5MB" />        
+        <param name="File" value="${catalina.home}/DSORM/logs/article.log" />
+    </appender>
+    <appender name="article-async" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="articleAppender"/>
+    </appender>
+     <logger name="article" additivity="false">
+         <priority value="info" />
+         <appender-ref ref="article-async" />
+    </logger>
+    
+    <appender name="exportAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+        <param name="MaxBackupIndex" value="5" />  
+        <param name="MaxFileSize" value="5MB" />        
+        <param name="File" value="${catalina.home}/DSORM/logs/export.log" />
+    </appender>
+    <appender name="export-async" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="exportAppender"/>
+    </appender>
+     <logger name="export" additivity="false">
+         <priority value="info" />
+         <appender-ref ref="export-async" />
+    </logger>
+    
+     <appender name="orderAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+        <param name="MaxBackupIndex" value="5" />  
+        <param name="MaxFileSize" value="5MB" />        
+        <param name="File" value="${catalina.home}/DSORM/logs/order.log" />
+    </appender>
+    <appender name="order-async" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="orderAppender"/>
+    </appender>
+     <logger name="order" additivity="false">
+         <priority value="info" />
+         <appender-ref ref="order-async" />
+    </logger>
+    
+    <appender name="supplyAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+        <param name="MaxBackupIndex" value="2" />  
+        <param name="MaxFileSize" value="5MB" />        
+        <param name="File" value="${catalina.home}/DSORM/logs/supply.log" />
+    </appender>
+    <appender name="supply-async" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="supplyAppender"/>
+    </appender>
+     <logger name="supply" additivity="false">
+         <priority value="info" />
+         <appender-ref ref="supply-async" />
+    </logger>
+    
+     <appender name="threadAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+        <param name="MaxBackupIndex" value="5" />  
+        <param name="MaxFileSize" value="5MB" />        
+        <param name="File" value="${catalina.home}/DSORM/logs/thread.log" />
+    </appender>
+    <appender name="thread-async" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="threadAppender"/>
+    </appender>
+     <logger name="thread" additivity="false">
+         <priority value="info" />
+         <appender-ref ref="thread-async" />
+    </logger>
+    
+     <appender name="appEtagAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+        <param name="MaxBackupIndex" value="2" />  
+        <param name="MaxFileSize" value="5MB" />        
+        <param name="File" value="${catalina.home}/DSORM/logs/appEtag.log" />
+    </appender>
+    <appender name="appEtag-async" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="appEtagAppender"/>
+    </appender>
+     <logger name="appEtag" additivity="false">
+         <priority value="info" />
+         <appender-ref ref="appEtag-async" />
+    </logger>
+    
+    
+    <appender name="wechatAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+        <param name="MaxBackupIndex" value="5" />  
+        <param name="MaxFileSize" value="5MB" />        
+        <param name="File" value="${catalina.home}/DSORM/logs/wechat.log" />
+    </appender>
+    <appender name="wechat-async" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="wechatAppender"/>
+    </appender>
+     <logger name="wechat" additivity="false">
+         <priority value="info" />
+         <appender-ref ref="wechat-async" />
+    </logger>
+    
+    
+    <appender name="memcacheAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d (%F:%L) %-5p %c - %m%n" />
+        </layout>
+        <param name="MaxBackupIndex" value="5" />  
+        <param name="MaxFileSize" value="5MB" />        
+        <param name="File" value="${catalina.home}/DSORM/logs/memcache.log" />
+    </appender>
+    <appender name="memcache-async" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="memcacheAppender"/>
+    </appender>
+     <logger name="memcache" additivity="false">
+         <priority value="info" />
+         <appender-ref ref="memcache-async" />
+    </logger>
+    
+    
+    
+</log4j:configuration>

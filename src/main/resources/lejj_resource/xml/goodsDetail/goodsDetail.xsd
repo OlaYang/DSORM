@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"  elementFormDefault="qualified">
+	<xs:element name="meiQiReferrer">           
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sections" maxOccurs="unbounded" minOccurs="2" type="Section" />
+                <xs:element name="tools" type="SectionItem" maxOccurs="unbounded" minOccurs="0"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- 结构模板 -->
+
+    <xs:complexType name="Section">
+                <xs:sequence>
+                    <xs:element name="sectionName" minOccurs="0">
+                        <xs:simpleType>
+                        	<xs:restriction base="xs:string">
+                        		<xs:enumeration
+                        			value="GoodsDetailSectionForTitle">
+                        		</xs:enumeration>
+                        		<xs:enumeration
+                        			value="GoodsDetailSectionForTransport">
+                        		</xs:enumeration>
+                        		<xs:enumeration
+                        			value="GoodsDetailSectionForRecommend">
+                        		</xs:enumeration>
+                        		<xs:enumeration
+                        			value="GoodsDetailSectionForStore">
+                        		</xs:enumeration>
+                        	</xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="sectionItems" type="SectionItem" maxOccurs="unbounded" minOccurs="0"></xs:element>
+                </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="SectionItem">
+                <xs:sequence>               
+                    <xs:element name="multItems" type="xs:string" minOccurs="0"></xs:element>
+                    <xs:element name="viewName" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">                          
+                                <xs:enumeration
+                                    value="GoodsDetailSectionForTitleAtTitleCell">
+                                </xs:enumeration>
+                                <xs:enumeration
+                                    value="GoodsDetailSectionForTitleAtRemarkCell">
+                                </xs:enumeration>
+                                <xs:enumeration
+                                    value="GoodsDetailSectionForTitleAtPriceCell">
+                                </xs:enumeration>
+                            
+                                <xs:enumeration
+                                    value="GoodsDetailSectionForTransportStandardCell">
+                                </xs:enumeration>
+                                <xs:enumeration
+                                    value="GoodsDetailSectionForTransportCell">
+                                </xs:enumeration>
+                                
+                                <xs:enumeration
+                                    value="GoodsDetailSectionForStoreAddressCell">
+                                </xs:enumeration>
+                                <xs:enumeration
+                                    value="GoodsDetailSectionForStorePhoneCell">
+                                </xs:enumeration>
+                                <xs:enumeration
+                                    value="GoodsDetailSectionForStoreTitleCell">
+                                </xs:enumeration>
+                                
+                                <xs:enumeration
+                                    value="GoodsDetailSectionForRecommendCell">
+                                </xs:enumeration>
+                                
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="data" minOccurs="0" type="xs:anyType"></xs:element>
+                    <xs:element name="actions" type="Action" maxOccurs="unbounded" minOccurs="0"></xs:element>
+                </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Action">
+        <xs:sequence>
+            <xs:element name="actionName" minOccurs="0">
+            </xs:element>
+            <xs:element name="sender" minOccurs="0">
+            </xs:element>
+            <xs:element name="title" minOccurs="0">
+            </xs:element>
+            <xs:element name="actionValue" minOccurs="0">
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="YLAPIResource.xsd">
+   <version>1</version>
+    <host></host>
+    <timeout></timeout>
+    <!-- 2.6.1.1.1 广告接口 -->
+    <api>
+        <req>
+            <name>adAPIName</name>
+            <server>ad/home</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <api>
+        <req>
+            <name>adAPIName</name>
+            <server>ad/header</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <api>
+        <req>
+            <name>adAPIName</name>
+            <server>ad/mix</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <api>
+        <req>
+            <name>adAPIName</name>
+            <server>ad/banner</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.1.1.2 分类接口 -->
+   <api>
+        <req>
+            <name>categoryAPIName</name>
+            <server>category/home</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.1.1.3 热卖商品 -->
+    <api>
+        <req>
+            <name>hotGoodsAPIName</name>
+            <server>goods/hotGoods</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.1.2.1 商品详情接口 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>goodsDetailAPIName</name>
+            <server>goodsDetail</server>
+            <parameters>
+                <goodsId></goodsId>
+                <attributes></attributes>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.1.2.2 获取商品基本信息 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>goodsInfoAPIName</name>
+            <server>goodsInfo</server>
+            <parameters>
+                <goodsId></goodsId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.1.2.3 获取活动与计数数据 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>goodsDynamicAPIName</name>
+            <server>goodsDynamic</server>
+            <parameters>
+                <goodsId></goodsId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.1.2.4 猜你喜欢 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>goodsRecommandsAPIName</name>
+            <server>goodsRecommands</server>
+            <parameters>
+                <goodsId></goodsId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.1.2.5 获取商品规格 改endPoint参数名 --> 
+    <api>
+        <req>
+            <name>goodsStandardsAPIName</name>
+            <server>goodsStandards</server>
+            <parameters>
+                <goodsId></goodsId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.1.2.6 根据商品规格获取 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>goodsAttributesAPIName</name>
+            <server>goodsAttributes</server>
+            <parameters>
+                <goodsId></goodsId>
+                <attributes></attributes>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.1.2.7 获取商品详情的界面样式 -->
+    <api>
+        <req>
+            <name>goodsUIStyleAPIName</name>
+            <server>goodsId/goods/style</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.1.2.8 详情内容HTML接口 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>goodsGraphicDetailAPIName</name>
+            <server>goodsGraphicDetail</server>
+            <parameters>
+                <goodsId></goodsId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.1.3 评论列表接口 -->
+    <api>
+        <req>
+            <name>goodsCommentsAPIName</name>
+            <server>goodsComments</server>
+            <parameters>
+                <goodsId></goodsId>
+                <type></type>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.2.1 分类父类接口 -->
+    <api>
+        <req>
+            <name>categoryParentAPIName</name>
+            <server>category/all</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.2.2 分类子类接口 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>categorySubcategoryAPIName</name>
+            <server>categorySubcategory</server>
+            <parameters>
+               <catId></catId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.2.3.1 热门搜索接口 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>searchHotKeyWordAPIName</name>
+            <server>searchHotKeyWord</server>
+            <parameters>
+               <catId></catId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.2.3.2 产品搜索接口 -->
+    <api>
+        <req>
+            <name>searchProductAPIName</name>
+            <server>search</server>
+            <parameters>
+                <searchName></searchName>
+                <filterItems></filterItems>
+                <sort></sort>
+                <type></type>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.2.3.3 筛选条件接口 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>searchFilterAPIName</name>
+            <server>searchFilter</server>
+            <parameters>
+                <searchName></searchName>
+                <type></type>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.3.1 购物车列表接口 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>cartListAPIName</name>
+            <server>cartList</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <!-- 添加购物车 改endPoint参数名 改接口2.6.3.1 -->
+    <api>
+        <req>
+            <name>addCartAPIName</name>
+            <server>addCart</server>
+            <parameters>
+                <goodsId></goodsId>
+                <goodsAmount></goodsAmount>
+            </parameters>
+        </req>
+    </api>
+    <!-- 更新购物车信息 改endPoint参数名 改接口2.6.3.1 -->
+    <api>
+        <req>
+            <name>updateCartAPIName</name>
+            <server>updateCart</server>
+            <parameters>
+                <cartId></cartId>
+                <goodsAmount></goodsAmount>
+                <goodsId></goodsId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 删除购物车 改endPoint参数名 改接口2.6.3.1 -->
+    <api>
+        <req>
+            <name>deleteCartAPIName</name>
+            <server>deleteCart</server>
+            <parameters>
+                <cartIds></cartIds>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.3.2 获取购物车商品数量(Total) -->
+    <api>
+        <req>
+            <name>cartTotalAPIName</name>
+            <server>cartTotal</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.3.3 购物车单条接口 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>cartSingleAPIName</name>
+            <server>cartSingle</server>
+            <parameters>
+                <cartId></cartId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.3.4 购物车选择接口 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>cartSelectAPIName</name>
+            <server>cartSelect</server>
+            <parameters>
+               <cartIds></cartIds>
+               <selected></selected>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.3.5 订单接口 -->
+    <api>
+        <req>
+            <name>orderAPIName</name>
+            <server>order</server>
+            <parameters>
+                <consignee></consignee>
+                <carts></carts>
+                <transportMethods></transportMethods>
+                <paymentMethodType></paymentMethodType>
+                <goodsPrice></goodsPrice>
+                <transportPrice></transportPrice>
+                <amount></amount>
+                <code></code>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.3.6 订单列表 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>orderListAPIName</name>
+            <server>orderList</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.3.7 获取订单折扣信息 -->
+    <api>
+        <req>
+            <name>orderDiscountAPIName</name>
+            <server>order/discount</server>
+            <parameters>
+                <goodsPrice></goodsPrice>
+                <code></code>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.3.8 获取订单详情 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>orderDetailAPIName</name>
+            <server>orderDetail</server>
+            <parameters>
+                <orderId></orderId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.3.9 获取订单支付方式 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>orderPayWayAPIName</name>
+            <server>orderPayWay</server>
+            <parameters>
+                <orderId></orderId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.3.10 获取订单支付情况 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>orderPayStatusAPIName</name>
+            <server>orderPayStatus</server>
+            <parameters>
+                <orderId></orderId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.3.11 修改订单状态 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>alterOrderStatusAPIName</name>
+            <server>alterOrderStatus</server>
+            <parameters>
+                <orderId></orderId>
+                <orderStatus></orderStatus>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.3.12 删除订单 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>deleteOrderAPIName</name>
+            <server>deleteOrder</server>
+            <parameters>
+                <orderId></orderId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.3.13 支付状态 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>payStatusAPIName</name>
+            <server>payStatus</server>
+            <parameters>
+                <orderId></orderId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.4.1 客户 查询收货人 -->
+    <api>
+        <req>
+            <name>consigneeAPIName</name>
+            <server>cnsignee</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.4.1 客户 新增收货地址 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>alterCnsigneeAddressAPIName</name>
+            <server>alterCnsigneeAddress</server>
+            <parameters>
+                <name></name>
+                <phone></phone>
+                <regionId></regionId>
+                <detail></detail>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.4.1 客户 修改收货地址 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>updateCnsigneeAddressAPIName</name>
+            <server>updateCnsigneeAddress</server>
+            <parameters>
+                <consigneeId></consigneeId>
+                <name></name>
+                <phone></phone>
+                <regionId></regionId>
+                <detail></detail>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.4.1 客户 删除收货人 -->
+    <api>
+        <req>
+            <name>deleteCnsigneeAPIName</name>
+            <server>deleteCnsignee</server>
+            <parameters>
+                <consigneeId></consigneeId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.4.2 获取折扣码发送记录（Total）-->
+    <api>
+        <req>
+            <name>discountCodeTotalAPIName</name>
+            <server>discountCodeTotal</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.4.3 获取折扣码发送记录（List） -->
+    <api>
+        <req>
+            <name>discountCodeListAPIName</name>
+            <server>discountCodeList</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.4.4 查询订单 -->
+    <api>
+        <req>
+            <name>queryOrderAtPhoneAPIName</name>
+            <server>queryOrderAtPhone</server>
+            <parameters>
+                <phone></phone>
+                <pageIndex></pageIndex>
+                <pageSize></pageSize>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.5.1 商品收藏 获取收藏列表 -->
+    <api>
+        <req>
+            <name>favoriteListAPIName</name>
+            <server>favorite</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.5.1 商品收藏 添加收藏 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>addFavoriteAPIName</name>
+            <server>addFavorite</server>
+            <parameters>
+                <goodsIds></goodsIds>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.5.1 商品收藏 删除收藏 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>deleteFavoriteAPIName</name>
+            <server>deleteFavorite</server>
+            <parameters>
+                <goodsIds></goodsIds>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.5.2 意见反馈 -->
+    <api>
+        <req>
+            <name>feedbackAPIName</name>
+            <server>feedback</server>
+            <parameters>
+                <msgType></msgType>
+                <msgContent></msgContent>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.5.3 佣金明细 -->
+    <api>
+        <req>
+            <name>commissionAPIName</name>
+            <server>commission</server>
+            <parameters>
+                <status></status>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.5.4 佣金详情 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>commissionDetailAPIName</name>
+            <server>commissionDetail</server>
+            <parameters>
+                <commissionId></commissionId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.5.5 获取用户中心 -->
+    <api>
+        <req>
+            <name>userCenterAPIName</name>
+            <server>user/userCenter</server>
+            <parameters>
+                <userRole></userRole>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.1 登录注册接口 用户登陆 -->
+    <api>
+        <req>
+            <name>userEnterAPIName</name>
+            <server>userEnter</server>
+            <parameters>
+                <phone></phone>
+                <password></password>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.1 登录注册接口 用户注册 -->
+    <api>
+        <req>
+            <name>userLoginAPIName</name>
+            <server>userLogin</server>
+            <parameters>
+                <phone></phone>
+                <password></password>
+                <code></code>
+                <inviteCode></inviteCode>
+                <roleId></roleId>
+                <companyId></companyId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.1 登录注册接口 用户更新 -->
+    <api>
+        <req>
+            <name>userUpdateAPIName</name>
+            <server>userUpdate</server>
+            <parameters>
+                <realName></realName>
+                <sex></sex>
+                <regionId></regionId>
+                <companyId></companyId>
+                <roleId></roleId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.1 登录注册接口 获取用户资料 -->
+    <api>
+        <req>
+            <name>userAPIName</name>
+            <server>user</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.2 密码接口 修改密码 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>alterPasswordAPIName</name>
+            <server>alterPassword</server>
+            <parameters>
+                <oldPassword></oldPassword>
+                <password></password>
+                <confirmPassword></confirmPassword>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.2 密码接口 找回密码 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>retrievePasswordAPIName</name>
+            <server>retrievePassword</server>
+            <parameters>
+                <code></code>
+                <password></password>
+                <phone></phone>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.3 获取验证码接口 -->
+    <api>
+        <req>
+            <name>codeAPIName</name>
+            <server>user/code</server>
+            <parameters>
+                <phone></phone>
+                <type></type>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.4 检查验证码合法 -->
+    <api>
+        <req>
+            <name>codeCheckAPIName</name>
+            <server>user/code/check</server>
+            <parameters>
+                <phone></phone>
+                <type></type>
+                <code></code>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.5 获取支持的银行信息 -->
+    <api>
+        <req>
+            <name>allBankAPIName</name>
+            <server>allBank</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.6 用户银行卡管理 获取用户绑定的银行卡 -->
+    <api>
+        <req>
+            <name>bankAPIName</name>
+            <server>bank</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.6 用户银行卡管理 添加银行卡 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>addBankAPIName</name>
+            <server>addBank</server>
+            <parameters>
+               <userRealName></userRealName>
+               <code></code>
+               <bankId></bankId>
+               <cardNumber></cardNumber>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.6 用户银行卡管理 解除绑定银行卡 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>deleteBankAPIName</name>
+            <server>deleteBank</server>
+            <parameters>
+                <myBankId></myBankId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.6 用户银行卡管理 更换银行卡 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>changeBankAPIName</name>
+            <server>changeBank</server>
+            <parameters>
+                <myBankId></myBankId>
+                <userRealName></userRealName>
+                <code></code>
+                <bankId></bankId>
+                <cardNumber></cardNumber>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.7 更换绑定手机号 -->
+    <api>
+        <req>
+            <name>changePhoneAPIName</name>
+            <server>user/phone</server>
+            <parameters>
+                <phone></phone>
+                <type></type>
+                <code></code>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.8 检查手机号是否已注册 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>phoneCheckAPIName</name>
+            <server>user/phone/check</server>
+            <parameters>
+                <phone></phone>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.9 获取匿名用户 -->
+    <api>
+        <req>
+            <name>userAnonymousAPIName</name>
+            <server>user/anonymous</server>
+            <parameters>
+                <deviceId></deviceId>
+                <authorization></authorization>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.10 申请入驻记录 -->
+    <api>
+        <req>
+            <name>userApplyEntryLogAPIName</name>
+            <server>user/applyEntryLog</server>
+            <parameters>
+                <authorization></authorization>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.11 发送邀约码 改endPoint参数名 -->
+    <api>
+        <req>
+            <name>inviteCodeAPIName</name>
+            <server>inviteCode</server>
+            <parameters>
+                <receivePhone></receivePhone>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.12 获取邀约码发送记录(Total) -->
+    <api>
+        <req>
+            <name>inviteCodeTotalAPIName</name>
+            <server>inviteCodeTotal</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.13 获取邀约码发送记录(List) -->
+    <api>
+        <req>
+            <name>inviteCodeListAPIName</name>
+            <server>inviteCodeList</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.14 邀约码序号 -->
+    <api>
+        <req>
+            <name>inviteCodeCheckAPIName</name>
+            <server>user/inviteCode/check</server>
+            <parameters>
+                <code></code>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.6.15 查询行业专家入驻状态返回html页面url -->
+    <api>
+        <req>
+            <name>applyEntryStatusAPIName</name>
+            <server>user/ApplyEntryStatus</server>
+            <parameters>
+                <code></code>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.7.1 获取城市地区接口 -->
+    <api>
+        <req>
+            <name>regionAPIName</name>
+            <server>region/all</server>
+            <parameters>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.7.2 获取合作公司接口 -->
+    <api>
+        <req>
+            <name>companyAPIName</name>
+            <server>company</server>
+            <parameters>
+                <type></type>
+                <regionId></regionId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.7.3 获取合作公司(Total)接口 -->
+    <api>
+        <req>
+            <name>companyTotalAPIName</name>
+            <server>companyTotal</server>
+            <parameters>
+                <type></type>
+                <regionId></regionId>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.7.4 获取静态资源接口 -->
+    <api>
+        <req>
+            <name>getStaticResourceAPIName</name>
+            <server></server>
+            <parameters>
+                <reckoning_tips_url></reckoning_tips_url>
+                <phone_for_400></phone_for_400>
+                <imageUrl_for_QRCode></imageUrl_for_QRCode>
+                <webUrl_for_discount></webUrl_for_discount>
+            </parameters>
+        </req>
+    </api>
+    <!-- 2.6.7.5 发送短信接口 -->
+    <api>
+        <req>
+            <name>SMSCodeAPIName</name>
+            <server>SMS/code</server>
+            <parameters>
+                <phone></phone>
+                <msg></msg>
+                <type></type>
+            </parameters>
+        </req>
+    </api>
+</root>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

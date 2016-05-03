@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.meiqi.data.dao.impl.TServiceNextDBConfigDaoImpl">
+
+	<resultMap type="TServiceNextDBConfig" id="tServiceNextDBConfigInfo">
+		<result property="id" column="id" />
+		<result property="serviceName" column="serviceName" />
+		<result property="dbNameKey" column="dbNameKey" />
+		<result property="dbNameValue" column="dbNameValue" />
+		<result property="dbID" column="dbID" />
+		<result property="nodeID" column="nodeID" />
+	</resultMap>
+
+	<select id="SelectTServiceNextDBConfig" resultMap="tServiceNextDBConfigInfo">
+		select * from
+		t_service_next_db_config
+	</select>
+</mapper>

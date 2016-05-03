@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.meiqi.data.dao.impl.WxApiInfoDaoImpl">
+
+	<resultMap type="WxApiInfo" id="wxApiInfo">
+		<result property="apiId" column="api_id" />
+		<result property="apiName" column="api_name" />
+		<result property="apiUrl" column="api_url" />
+		<result property="apiComment" column="api_comment" />
+		<result property="apiType" column="api_type" />
+		<result property="urlType" column="url_type" />
+		<result property="addTime" column="add_time" />
+		<result property="userName" column="user_name" />
+		<result property="apiGroupId" column="api_group_id" />
+		<result property="isAccessToken" column="is_accesstoken" />
+	</resultMap>
+
+	<select id="SelectAllApi" resultMap="wxApiInfo">
+		select api_id ,api_name ,api_url ,api_comment ,url_type,api_type
+		,add_time,user_name	,api_group_id ,is_accesstoken 
+		from wx_api_info
+	</select>
+
+	<select id="SelectApiByName" parameterType="java.lang.String" resultMap="wxApiInfo">
+		select api_id ,api_name ,api_url ,api_comment ,url_type,api_type
+		,add_time,user_name	,api_group_id ,is_accesstoken 
+		from wx_api_info
+		where   api_name = #{_parameter}
+	</select>
+	
+	<select id="SelectApiById" parameterType="java.lang.Integer" resultMap="wxApiInfo">
+		select api_id ,api_name ,api_url ,api_comment ,url_type,api_type
+		,add_time,user_name	,api_group_id ,is_accesstoken 
+		from wx_api_info
+		where  api_id = #{_parameter}
+	</select>
+	
+	
+</mapper>

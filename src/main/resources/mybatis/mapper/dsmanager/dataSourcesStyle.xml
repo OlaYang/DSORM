@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.meiqi.dsmanager.dao.impl.DataSourcesStyleDaoImpl">
+
+
+	<resultMap id="dsStyleInfo" type="DataSourcesStyle">
+		<result property="id" column="id" />
+		<result property="stytleContent" column="style_content" />
+		<result property="styleNumber" column="style_sn" />
+		<result property="remark" column="style_remark" />
+	</resultMap>
+
+	<resultMap type="DataSourcesStyle" id="styleDsMap" extends="dsStyleInfo">
+		<collection property="dsList" ofType="DataSources">
+			<result property="id" column="id" />
+			<result property="name" column="ds_name" />
+			<result property="dsContent" column="ds_content" />
+			<result property="dsRemark" column="ds_remark" />
+			<result property="isDelete" column="is_delete" />
+			<result property="isEnabled" column="is_enabled" />
+			<result property="createName" column="ds_createUser" />
+			<result property="createDate" column="ds_createDate" />
+			<result property="lastName" column="ds_lastUser" />
+			<result property="lastDate" column="ds_lastDate" />
+			<result property="version" column="ds_version" />
+			<result property="cacheLevel" column="cache_level" />
+		</collection>
+	</resultMap>
+
+
+	<!-- <select id="selectByName_dataSources" parameterType="String" resultType="datasources"> 
+		select * from data_sources where ds_name=#{name} </select> <select id="selectByNameAndStyleNumber_dataSources" 
+		parameterType="datasources" resultType="datasources"> select * from data_sources 
+		ds left join ds_connection_styles dcs on ds.id = dcs.data_sources_id left 
+		join ds_styles s on s.id=dcs.ds_styles_id where ds.ds_name = #{DataSources.name} 
+		and s.style_sn =#{DataSourcesStyle.styleNumber} </select> -->
+</mapper>

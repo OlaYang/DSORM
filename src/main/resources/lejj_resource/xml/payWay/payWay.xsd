@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"  elementFormDefault="qualified">
+    <xs:include schemaLocation=""></xs:include>
+    <xs:element name="meiQiReferrer">    		
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="sections" maxOccurs="unbounded"
+					minOccurs="1" type="Section" />
+			</xs:sequence>
+		</xs:complexType>
+    </xs:element>
+
+    <!-- 结构模板 -->
+    <xs:complexType name="Section">
+    	<xs:sequence>
+    				<xs:element name="sectionName">
+    					<xs:simpleType>
+    						<xs:restriction base="xs:string">
+    							<xs:enumeration
+    								value="PayWaySection">
+    							</xs:enumeration>
+    						</xs:restriction>
+    					</xs:simpleType>
+    				</xs:element>
+    				<xs:element name="sectionItems" type="SectionItem" maxOccurs="unbounded" minOccurs="1"></xs:element>
+    			</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="SectionItem">
+    	<xs:sequence>
+    				<xs:element name="modelName" minOccurs="0">
+    					<xs:simpleType>
+    						<xs:restriction base="xs:string">
+    							<xs:enumeration
+    								value="PayWayCellData">
+    								</xs:enumeration>
+    							<xs:enumeration
+    								value="PayWayOrderInfoCellData">
+    							</xs:enumeration>
+    						</xs:restriction>
+    					</xs:simpleType>
+    				</xs:element>
+    				<xs:element name="viewName" minOccurs="0">
+    					<xs:simpleType>
+    						<xs:restriction base="xs:string">
+    							<xs:enumeration
+    								value="PayWayCell">
+    							</xs:enumeration>
+    							 <xs:enumeration
+    								value="PayWayOrderInfoCell">
+    							</xs:enumeration>
+    						</xs:restriction>
+    					</xs:simpleType>
+    				</xs:element>
+    				<xs:element name="data" minOccurs="0" type="xs:anyType"></xs:element>
+    				<xs:element name="actions"  minOccurs="0"  maxOccurs="unbounded" type="Action"/>  <!--事件 -->
+		</xs:sequence>
+    </xs:complexType>
+    
+    
+<xs:complexType name="Action">
+		<xs:sequence>
+			<xs:element name="actionName" minOccurs="0"> <!--事件 -->			
+				<xs:simpleType> <!--数据模型名 -->
+					<xs:restriction base="xs:string">			
+					<xs:enumeration value="alipayCommand"></xs:enumeration> 
+					<xs:enumeration value="billpayCommand"></xs:enumeration> 
+					<xs:enumeration value="wechatpayCommand"></xs:enumeration>
+					<xs:enumeration value="kSSwipePayCommand"></xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="sender" minOccurs="0" type="xs:string">
+    		</xs:element>
+			<xs:element name="title" minOccurs="0" type="xs:string"/> <!--按钮的标题-->
+			<xs:element name="actionValue" minOccurs="0" /> <!--参数内容 -->
+		</xs:sequence>
+	</xs:complexType>
+
+<!-- Data定义 -->
+<xs:complexType name="PayWayCellData">
+    <xs:sequence>
+        <xs:element name="lblTitle" type="xs:string">
+        </xs:element>
+        <xs:element name="lblDescribe" type="xs:string">
+        </xs:element>
+        <xs:element name="imgLogo" type="xs:string">
+        </xs:element>
+    </xs:sequence>    
+</xs:complexType>
+
+<xs:complexType name="PayWayOrderInfoCellData">
+    <xs:sequence>
+        <xs:element name="lblOrderNumber" type="xs:string">
+        </xs:element>
+        <xs:element name="lblOrderPrice" type="xs:string">
+        </xs:element>
+    </xs:sequence>    
+</xs:complexType>
+
+</xs:schema>

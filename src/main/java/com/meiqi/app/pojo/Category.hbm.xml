@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年4月7日 15:13:08 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.Category" table="ecs_category"
+		mutable="true" dynamic-update="false" dynamic-insert="false"
+		select-before-update="false" lazy="true" abstract="false">
+		<id name="catId">
+			<column name="cat_id" sql-type="smallint(5)" not-null="true"
+				length="5" />
+			<generator class="native" />
+		</id>
+		<property name="catName" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="cat_name" sql-type="varchar(90)" not-null="true"
+				length="90" />
+		</property>
+		<property name="keywords" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="keywords" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="catDesc" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="cat_desc" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="parentId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="parent_id" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="sortOrder" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="sort_order" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="templateFile" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="template_file" sql-type="varchar(50)" not-null="true"
+				length="50" />
+		</property>
+		<property name="measureUnit" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="measure_unit" sql-type="varchar(15)" not-null="true"
+				length="15" />
+		</property>
+		<property name="showInNav" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="show_in_nav" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="style" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="style" sql-type="varchar(150)" not-null="true"
+				length="150" />
+		</property>
+		<property name="isShow" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_show" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="grade" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="grade" sql-type="tinyint(4)" not-null="true"
+				length="4" />
+		</property>
+		<property name="filterAttr" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="filter_attr" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="hot" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="hot" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="imageURL" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="image_url" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="homeShow" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="home_show" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="recommend" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="recommend" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="functionType" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="function_type" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+
+		<set name="subCategates" outer-join="false" lazy="false"
+			optimistic-lock="true">
+			<key on-delete="noaction" unique="false">
+				<column name="parent_id" sql-type="smallint(5)" not-null="false" />
+			</key>
+			<one-to-many class="com.meiqi.app.pojo.Category" />
+		</set>
+	</class>
+</hibernate-mapping>

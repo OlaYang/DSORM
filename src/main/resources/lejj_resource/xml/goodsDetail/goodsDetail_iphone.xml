@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meiQiReferrer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="goodsDetail.xsd">
+  <sections>
+    <sectionName>GoodsDetailSectionForTitle</sectionName>
+    <sectionItems>
+    	<viewName>GoodsDetailSectionForTitleAtTitleCell</viewName>
+    </sectionItems>
+    <sectionItems>
+    	<viewName>GoodsDetailSectionForTitleAtRemarkCell</viewName>
+    </sectionItems>
+    <sectionItems>
+    	<viewName>GoodsDetailSectionForTitleAtPriceCell</viewName>
+    </sectionItems>
+    <sectionItems>
+    	<viewName>GoodsDetailSectionForTransportStandardCell</viewName>
+    </sectionItems>
+    <sectionItems>
+    	<viewName>GoodsDetailSectionForTransportCell</viewName>
+    </sectionItems>
+  </sections>
+  <sections>
+    <sectionName>GoodsDetailSectionForRecommend</sectionName>
+    <sectionItems>
+    	<viewName>GoodsDetailSectionForRecommendCell</viewName>
+    </sectionItems>
+    <sectionItems></sectionItems>
+  </sections>
+</meiQiReferrer>

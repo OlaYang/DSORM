@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年4月7日 15:13:08 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.Cart" table="ecs_cart" mutable="true"
+		dynamic-update="false" dynamic-insert="false" select-before-update="false"
+		lazy="true" abstract="false">
+		<id name="cartId">
+			<column name="rec_id" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+			<generator class="native"></generator>
+		</id>
+		<property name="userId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="user_id" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+		</property>
+		<property name="sessionId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="session_id" sql-type="char(32)" not-null="true"
+				length="32" />
+		</property>
+		<property name="goodsId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="goods_id" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+		</property>
+		<many-to-one name="goods" class="com.meiqi.app.pojo.Goods"
+			unique="true" lazy="false" outer-join="false" update="false" insert="false">
+			<column name="goods_id" sql-type="mediumint(8)" not-null="false" />
+		</many-to-one>
+
+		<property name="goodsSn" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="goods_sn" sql-type="varchar(60)" not-null="true"
+				length="60" />
+		</property>
+		<property name="productId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="product_id" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+		</property>
+		<property name="goodsName" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="goods_name" sql-type="varchar(120)" not-null="true"
+				length="120" />
+		</property>
+		<property name="marketPrice" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="market_price" sql-type="decimal(10,2)" not-null="true"
+				length="10" precision="2" />
+		</property>
+		<property name="goodsPrice" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="goods_price" sql-type="decimal(10,2)" not-null="true"
+				length="10" precision="2" />
+		</property>
+		<property name="goodsAmount" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="goods_number" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="goodsAttr" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="goods_attr" sql-type="text" not-null="true" />
+		</property>
+		<property name="isReal" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_real" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="extensionCode" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="extension_code" sql-type="varchar(30)" not-null="true"
+				length="30" />
+		</property>
+		<property name="parentId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="parent_id" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+		</property>
+		<property name="recType" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="rec_type" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="isGift" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_gift" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="isShipping" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_shipping" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="canHandsel" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="can_handsel" sql-type="tinyint(3)" not-null="true"
+				length="3" />
+		</property>
+		<property name="goodsAttrId" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="goods_attr_id" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="selected" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="selected" sql-type="tinyint(1)" not-null="false"
+				length="1" />
+		</property>
+		<property name="suitId" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="suit_id" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+	</class>
+</hibernate-mapping>

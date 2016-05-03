@@ -1,0 +1,9 @@
+<meiQiReferrer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="orderList.xsd">
+	<tools>
+		<viewName>TopBarView</viewName>
+		<data>
+			<bbtnRight>共 ${size} 个</bbtnRight>
+		</data>
+	</tools>
+	<tools/>
+</meiQiReferrer>

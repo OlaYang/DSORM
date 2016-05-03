@@ -1,0 +1,58 @@
+{
+	"bannerAdvertisement": [{
+		"adId": 252,
+		"imageURL": "http://image.lejj.com//images/s-20150615/43//b5254169b5d912f27d6cb96540afe86d.jpg",
+		"link": "1|22",
+		"name": "乐家购手机APP首页banner广告",
+		"objectId": 22,
+		"type": 1
+	}],
+	"headerAdvertisement": [{
+		"adId": 261,
+		"imageURL": "http://image.lejj.com//images/s-20150615/45//705c7f7d1c7e9de2e9b3c44602346072.jpg",
+		"link": "2|39",
+		"name": "乐家购手机APP首页顶部焦点图",
+		"objectId": 39,
+		"type": 2
+	},
+	{
+		"adId": 237,
+		"imageURL": "http://image.lejj.com//images/s-20150615/69//85e01af0fd142afcca4a513d82dbd94a.jpg",
+		"link": "2|96",
+		"name": "乐家购手机APP首页顶部焦点图",
+		"objectId": 96,
+		"type": 2
+	}],
+	"mixAdvertisement": [{
+		"adId": 240,
+		"imageURL": "http://image.lejj.com//images/s-20150615/18//00cac7f9021cb813ef835f5ca44aff0f.jpg",
+		"link": "2|167",
+		"name": "乐家购手机APP首页组合广告",
+		"objectId": 167,
+		"type": 2
+	},
+	{
+		"adId": 242,
+		"imageURL": "http://image.lejj.com//images/s-20150615/13//113a3a10907e87a02b890181fa2e27ed.jpg",
+		"link": "1|23",
+		"name": "乐家购手机APP首页组合广告",
+		"objectId": 23,
+		"type": 1
+	},
+	{
+		"adId": 260,
+		"imageURL": "http://image.lejj.com//images/s-20150615/91//3f005d1bacd43ad29e178facb401cbb9.jpg",
+		"link": "2|313",
+		"name": "乐家购手机APP首页组合广告",
+		"objectId": 313,
+		"type": 2
+	},
+	{
+		"adId": 245,
+		"imageURL": "http://image.lejj.com//images/s-20150615/82//55d413df1a610066e1b71470fca52d72.jpg",
+		"link": "1|31",
+		"name": "乐家购手机APP首页组合广告",
+		"objectId": 31,
+		"type": 1
+	}]
+}

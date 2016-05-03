@@ -1,0 +1,24 @@
+package com.meiqi.data.engine.functions;
+
+import com.meiqi.data.engine.DataUtil;
+import com.meiqi.data.engine.RengineException;
+import com.meiqi.data.engine.excel.CalInfo;
+import com.meiqi.data.engine.excel.NumberPool;
+
+/**
+ * User: 
+ * Date: 13-11-4
+ * Time: 下午1:00
+ */
+public final class LEN extends Function {
+    static final String NAME = LEN.class.getSimpleName();
+
+    @Override
+    public Object eval(CalInfo calInfo, Object[] args) throws RengineException {
+        if (args.length > 0) {
+            return new Long((DataUtil.getStringValue(args[0]).length()));
+        }
+
+        return NumberPool.LONG_0;
+    }
+}

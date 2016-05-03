@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年4月7日 15:13:08 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.Order" table="ecs_order_info"
+		mutable="true" dynamic-update="false" dynamic-insert="false"
+		select-before-update="false" lazy="true" abstract="false">
+		<id name="orderId">
+			<column name="order_id" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+			<generator class="native"></generator>
+		</id>
+		<properties name="order_snps" unique="true">
+			<property name="orderSn" insert="true" update="true" lazy="false"
+				optimistic-lock="true">
+				<column name="order_sn" sql-type="varchar(20)" not-null="true"
+					length="20" />
+			</property>
+		</properties>
+		<property name="userId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="user_id" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+		</property>
+		<property name="orderStatus" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="order_status" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="shippingStatus" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="shipping_status" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="payStatus" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="pay_status" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="name" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="consignee" sql-type="varchar(60)" not-null="true"
+				length="60" />
+		</property>
+		<property name="countryId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="country" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="provinceId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="province" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="cityId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="city" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="districtId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="district" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="extendId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="extend" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="detail" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="address" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="zipcode" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="zipcode" sql-type="varchar(60)" not-null="true"
+				length="60" />
+		</property>
+		<property name="tel" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="tel" sql-type="varchar(60)" not-null="true"
+				length="60" />
+		</property>
+		<property name="phone" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="mobile" sql-type="varchar(60)" not-null="true"
+				length="60" />
+		</property>
+		<property name="email" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="email" sql-type="varchar(60)" not-null="true"
+				length="60" />
+		</property>
+		<property name="bestTime" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="best_time" sql-type="varchar(120)" not-null="true"
+				length="120" />
+		</property>
+		<property name="signBuilding" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="sign_building" sql-type="varchar(120)" not-null="true"
+				length="120" />
+		</property>
+		<property name="postscript" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="postscript" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="shippingId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="shipping_id" sql-type="tinyint(3)" not-null="true"
+				length="3" />
+		</property>
+		<property name="shippingName" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="shipping_name" sql-type="varchar(120)" not-null="true"
+				length="120" />
+		</property>
+		<property name="payId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="pay_id" sql-type="tinyint(3)" not-null="true"
+				length="3" />
+		</property>
+		<property name="payName" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="pay_name" sql-type="varchar(120)" not-null="true"
+				length="120" />
+		</property>
+		<property name="howOos" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="how_oos" sql-type="varchar(120)" not-null="true"
+				length="120" />
+		</property>
+		<property name="howSurplus" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="how_surplus" sql-type="varchar(120)" not-null="true"
+				length="120" />
+		</property>
+		<property name="packName" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="pack_name" sql-type="varchar(120)" not-null="true"
+				length="120" />
+		</property>
+		<property name="cardName" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="card_name" sql-type="varchar(120)" not-null="true"
+				length="120" />
+		</property>
+		<property name="cardMessage" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="card_message" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="invPayee" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="inv_payee" sql-type="varchar(120)" not-null="true"
+				length="120" />
+		</property>
+		<property name="invContent" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="inv_content" sql-type="varchar(120)" not-null="true"
+				length="120" />
+		</property>
+		<property name="goodsPrice" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="goods_amount" sql-type="decimal(10,2)" not-null="true"
+				length="10" precision="2" />
+		</property>
+		<property name="transportPrice" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="shipping_fee" sql-type="decimal(10,2)" not-null="true"
+				length="10" precision="2" />
+		</property>
+		<property name="insureFee" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="insure_fee" sql-type="decimal(10,2)" not-null="true"
+				length="10" precision="2" />
+		</property>
+		<property name="payFee" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="pay_fee" sql-type="decimal(10,2)" not-null="true"
+				length="10" precision="2" />
+		</property>
+		<property name="packFee" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="pack_fee" sql-type="decimal(10,2)" not-null="true"
+				length="10" precision="2" />
+		</property>
+		<property name="cardFee" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="card_fee" sql-type="decimal(10,2)" not-null="true"
+				length="10" precision="2" />
+		</property>
+		<property name="moneyPaid" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="money_paid" sql-type="decimal(10,2)" not-null="true"
+				length="10" precision="2" />
+		</property>
+		<property name="surplus" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="surplus" sql-type="decimal(10,2)" not-null="true"
+				length="10" precision="2" />
+		</property>
+		<property name="integral" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="integral" sql-type="int(10)" not-null="true"
+				length="10" />
+		</property>
+		<property name="integralMoney" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="integral_money" sql-type="decimal(10,2)"
+				not-null="true" length="10" precision="2" />
+		</property>
+		<property name="bonus" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="bonus" sql-type="decimal(10,2)" not-null="true"
+				length="10" precision="2" />
+		</property>
+		<property name="amount" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="order_amount" sql-type="decimal(10,2)" not-null="true"
+				length="10" precision="2" />
+		</property>
+		<property name="fromAd" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="from_ad" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="referer" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="referer" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="addTime" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="add_time" sql-type="int(10)" not-null="true"
+				length="10" />
+		</property>
+		<property name="confirmTime" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="confirm_time" sql-type="int(10)" not-null="true"
+				length="10" />
+		</property>
+		<property name="payTime" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="pay_time" sql-type="int(10)" not-null="true"
+				length="10" />
+		</property>
+		<property name="shippingTime" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="shipping_time" sql-type="int(10)" not-null="true"
+				length="10" />
+		</property>
+		<property name="packId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="pack_id" sql-type="tinyint(3)" not-null="true"
+				length="3" />
+		</property>
+		<property name="cardId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="card_id" sql-type="tinyint(3)" not-null="true"
+				length="3" />
+		</property>
+		<property name="bonusId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="bonus_id" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+		</property>
+		<property name="invoiceNo" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="invoice_no" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="extensionCode" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="extension_code" sql-type="varchar(30)" not-null="true"
+				length="30" />
+		</property>
+		<property name="extensionId" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="extension_id" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+		</property>
+		<property name="toBuyer" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="to_buyer" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="payNote" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="pay_note" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="agencyId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="agency_id" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="invType" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="inv_type" sql-type="varchar(60)" not-null="true"
+				length="60" />
+		</property>
+		<property name="tax" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="tax" sql-type="decimal(10,2)" not-null="true"
+				length="10" precision="2" />
+		</property>
+		<property name="isSeparate" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_separate" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="parentId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="parent_id" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+		</property>
+		<property name="preferent" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="preferent" sql-type="decimal(10,2)" not-null="true"
+				length="10" precision="2" />
+		</property>
+		<property name="isDel" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_del" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+        <property name="orderSource" insert="true" update="true" lazy="false"
+            optimistic-lock="true">
+            <column name="order_source" sql-type="tinyint(3)" not-null="true"
+                length="3" />
+        </property>
+	</class>
+</hibernate-mapping>

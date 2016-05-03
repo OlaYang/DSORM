@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年4月7日 15:13:08 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.GoodsAttr" table="ecs_goods_attr"
+		mutable="true" dynamic-update="false" dynamic-insert="false"
+		select-before-update="false" lazy="true" abstract="false">
+		<id name="goodsAttrId">
+			<column name="goods_attr_id" sql-type="int(10)" not-null="true"
+				length="10" />
+		</id>
+		<property name="goodsId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="goods_id" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+		</property>
+		<!-- <property name="attrId" insert="true" update="true" lazy="false" optimistic-lock="true"> 
+			<column name="attr_id" sql-type="smallint(5)" not-null="true" length="5"/> 
+			</property> -->
+		<many-to-one name="attribute" class="com.meiqi.app.pojo.Attribute"
+			unique="true" lazy="false" outer-join="false" update="false" insert="false">
+			<column name="attr_id" sql-type="smallint(5)" not-null="false"
+				length="5" />
+		</many-to-one>
+		<property name="attrValue" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="attr_value" sql-type="text" not-null="true" />
+		</property>
+		<property name="attrPrice" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="attr_price" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="sortOrder" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="sort_order" sql-type="tinyint(3)" not-null="true"
+				length="3" />
+		</property>
+	</class>
+</hibernate-mapping>

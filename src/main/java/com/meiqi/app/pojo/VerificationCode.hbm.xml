@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年4月7日 15:13:08 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.VerificationCode" table="lejj_verification_code"
+		mutable="true" dynamic-update="false" dynamic-insert="false"
+		select-before-update="false" lazy="true" abstract="false">
+		<id name="codeId">
+			<column name="code_id" sql-type="int(10)" not-null="true"
+				length="10" />
+			<generator class="native" />
+		</id>
+		<property name="type" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="code_type" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="objectId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="object_id" sql-type="varchar(60)" not-null="true"
+				length="3" />
+		</property>
+		<property name="codeValue" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="code_value" sql-type="varchar(8)" not-null="true"
+				length="8" />
+		</property>
+		<property name="validTime" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="valid_time" sql-type="int(11)" not-null="true"
+				length="11" />
+		</property>
+		<property name="isValid" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_valid" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+	</class>
+</hibernate-mapping>

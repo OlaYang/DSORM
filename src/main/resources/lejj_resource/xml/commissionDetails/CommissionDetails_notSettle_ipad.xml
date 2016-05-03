@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meiQiReferrer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CommissionDetails.xsd">
+	<sections>
+		<sectionName>CommissionListDetailsSection</sectionName>
+		<sectionItems>
+			<viewName>CommissionListDetailsTitleCell</viewName>
+			<data>
+				<lblPrice>${Commission.price}</lblPrice>
+				<lblSettled>未结算</lblSettled>
+			</data>
+		</sectionItems>
+		<sectionItems>
+			<viewName>CommissionListDetailsOrderCell</viewName>
+			<data>
+				<lblOrderNumber>${Commission.orderSn}</lblOrderNumber>
+				<lblOrderPrice>${Commission.orderAmount}</lblOrderPrice>
+				<lblDate>${Commission.createDate}</lblDate>
+			</data>
+			<actions>
+				<actionName>OrderCommand</actionName>
+				<sender>CommissionDetailsOrderCell</sender>
+				<actionValue>${OrderItem.orderId}</actionValue>
+			</actions>
+			<actions/>
+		</sectionItems>
+	</sections>
+	<sections/>
+</meiQiReferrer>

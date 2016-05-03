@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.meiqi.data.dao.impl.TServiceMappingDaoImpl">
+
+	<resultMap type="TServiceMapping" id="tServiceMappingInfo">
+		<result property="id" column="id" />
+		<result property="serviceInterface" column="serviceInterface" />
+		<result property="serviceImplement" column="serviceImplement" />
+	</resultMap>
+
+	<select id="ServiceMappingList" resultMap="tServiceMappingInfo">
+		select * from t_service_mapping
+	</select>
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年6月17日 19:45:08 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.ApplyEntryLog" table="lejj_apply_entry_log"
+		mutable="true" dynamic-update="false" dynamic-insert="false"
+		select-before-update="false" lazy="true" abstract="false">
+		<id name="logId">
+			<column name="log_id" sql-type="mediumint(10)" not-null="true"
+				length="10" />
+			<generator class="native" />
+		</id>
+		<property name="userId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="user_id" sql-type="mediumint(10)" not-null="true"
+				length="10" />
+		</property>
+		<property name="applyStatus" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="apply_status" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="applyLog" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="apply_log" sql-type="varchar(100)" not-null="true"
+				length="100" />
+		</property>
+		<property name="applyTime" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="apply_time" sql-type="int(10)" not-null="true"
+				length="10" />
+		</property>
+		<property name="remark" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="remark" sql-type="varchar(200)" not-null="true"
+				length="200" />
+		</property>
+	</class>
+</hibernate-mapping>

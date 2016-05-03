@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年4月7日 15:13:08 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.Bank" table="lejj_bank" mutable="true"
+		dynamic-update="false" dynamic-insert="false" select-before-update="false"
+		lazy="true" abstract="false">
+		<id name="bankId">
+			<column name="bank_id" sql-type="int(10)" not-null="true"
+				length="10" />
+			<generator class="native" />
+		</id>
+		<property name="bankName" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="bank_name" sql-type="varchar(60)" not-null="true"
+				length="60" />
+		</property>
+		<property name="bankLogo" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="bank_logo" sql-type="varchar(500)" not-null="true"
+				length="500" />
+		</property>
+		<property name="bankRemark" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="bank_remark" sql-type="varchar(500)" not-null="true"
+				length="500" />
+		</property>
+		<property name="sortOrder" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="sort_order" sql-type="tinyint(3)" not-null="true"
+				length="3" />
+		</property>
+	</class>
+</hibernate-mapping>

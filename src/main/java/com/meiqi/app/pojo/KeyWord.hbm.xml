@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年3月27日 14:28:19 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.KeyWord" table="lejj_keyword"
+		mutable="true" dynamic-update="false" dynamic-insert="false"
+		select-before-update="false" lazy="true" abstract="false">
+		<id name="keyword_id">
+			<column name="keyword_id" sql-type="bigint" not-null="true" />
+			<generator class="native"></generator>
+		</id>
+		<property name="keyword_type" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="keyword_type" sql-type="tinyint" />
+		</property>
+		<property name="keyword_value" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="keyword_value" sql-type="varchar(254)" length="254" />
+		</property>
+		<property name="search_count" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="search_count" sql-type="int" />
+		</property>
+		<many-to-one name="category" class="com.meiqi.app.pojo.Category"
+			unique="true" lazy="false" outer-join="false" update="false" insert="false">
+			<column name="category_id" sql-type="bigint" not-null="false" />
+		</many-to-one>
+		<many-to-one name="goods" class="com.meiqi.app.pojo.Goods"
+			unique="true" lazy="false" outer-join="false" update="false" insert="false">
+			<column name="product_id" sql-type="bigint" not-null="false" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

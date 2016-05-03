@@ -1,0 +1,28 @@
+{
+	"subCategates": [{
+		"catId": 5,
+		"keywords": "儿童房",
+		"catDesc": "儿童房",
+		"subCategates": [{
+			"catId": 47,
+			"catName": "儿童床",
+			"keywords": "儿童床",
+			"catDesc": "儿童床",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432764439689304659.png"
+		},
+		{
+			"catId": 48,
+			"catName": "儿童衣柜",
+			"keywords": "儿童衣柜",
+			"catDesc": "儿童衣柜",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432764531548103139.png"
+		},
+		{
+			"catId": 49,
+			"catName": "儿童书桌",
+			"keywords": "儿童书桌",
+			"catDesc": "儿童书桌",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432764580884614204.png"
+		}]
+	}]
+}

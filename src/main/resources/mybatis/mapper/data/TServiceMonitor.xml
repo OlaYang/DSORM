@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.meiqi.data.dao.impl.TServiceMonitorDaoImpl">
+
+	<resultMap type="TServiceMonitor" id="tServiceAlarmInfo">
+		<result property="mid" column="mid" />
+		<result property="httptimes" column="httptimes" />
+		<result property="cachesum" column="cachesum" />
+		<result property="serviceinvoke" column="serviceinvoke" />
+	</resultMap>
+
+	<insert id="insertTServiceMonitor" useGeneratedKeys="true"
+		parameterType="hashmap">
+		<selectKey resultType="java.lang.Integer" keyProperty="id"
+			order="AFTER">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into
+		t_service_monitor(httptimes, cachesum, serviceinvoke)
+		values(#{httptimes}, #{cachesum}, #{serviceinvoke})
+	</insert>
+</mapper>

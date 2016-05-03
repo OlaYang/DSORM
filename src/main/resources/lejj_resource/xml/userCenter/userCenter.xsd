@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"  elementFormDefault="qualified">
+	<xs:include schemaLocation=""></xs:include>
+	<xs:element name="meiQiReferrer">           
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sections" maxOccurs="unbounded"
+                    minOccurs="0" type="Section" />
+                <xs:element name="tools" type="SectionItem" maxOccurs="unbounded" minOccurs="0"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- 结构模板 -->
+
+    <xs:complexType name="Section">
+                <xs:sequence>
+                    <xs:element name="sectionName" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration
+                                    value="DesignerInfoSection">
+                                </xs:enumeration>
+                                <xs:enumeration
+                                    value="NormalSection">
+                                </xs:enumeration>
+                                <xs:enumeration
+                                    value="ResidentForNOSection">
+                                </xs:enumeration>
+                                 <xs:enumeration
+                                    value="ResidentForYESSection">
+                                </xs:enumeration>
+                                <xs:enumeration
+                                    value="CommissionSection">
+                                </xs:enumeration>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="sectionItems" type="SectionItem" maxOccurs="unbounded" minOccurs="0"></xs:element>
+                </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="SectionItem">
+                <xs:sequence>               
+                    <xs:element name="multItems" type="xs:string" minOccurs="0"></xs:element>
+                    <xs:element name="viewName" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                            <xs:enumeration
+                                    value="NormalCell">
+                                </xs:enumeration>
+                                <xs:enumeration
+                                    value="ResidentForYESCell">
+                                </xs:enumeration>
+                                 <xs:enumeration
+                                    value="ResidentForNOCell">
+                                </xs:enumeration>
+                                <xs:enumeration
+                                    value="DesignerInfoCell">
+                                </xs:enumeration>
+                                <xs:enumeration
+                                    value="CommissionCell">
+                                </xs:enumeration>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="data" minOccurs="0" type="xs:anyType"></xs:element>
+                    <xs:element name="actions" type="Action" maxOccurs="unbounded" minOccurs="0"></xs:element>
+                </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Action">
+    <xs:sequence>
+    <xs:element name="actionName" minOccurs="0">
+    			<xs:simpleType>
+    				<xs:restriction base="xs:string"> 
+    					<xs:enumeration value="myOrderCommand"></xs:enumeration>
+    					<xs:enumeration value="myCollectionCommand"></xs:enumeration>
+    					<xs:enumeration value="aboutUsCommand"></xs:enumeration> 
+    					<xs:enumeration value="processStatusCommand"></xs:enumeration>
+    					<xs:enumeration value="succeedStatusCommand"></xs:enumeration>
+    					<xs:enumeration value="failedStatusCommand"></xs:enumeration>
+    					<xs:enumeration value="designerInfoCommand"></xs:enumeration>
+    					<xs:enumeration value="checkoutKnowsCommand"></xs:enumeration>
+    					<xs:enumeration value="commissionDetailsCommand"></xs:enumeration>
+    					<xs:enumeration value="settingsCommand"></xs:enumeration>
+    					<xs:enumeration value="orderQueryCommand"></xs:enumeration>
+    				</xs:restriction>
+    			</xs:simpleType>
+    		</xs:element>
+    		<xs:element name="sender" minOccurs="0">
+    			<xs:simpleType>
+    				<xs:restriction base="xs:string">
+    					<xs:enumeration value="NormalCell"></xs:enumeration>
+    					<xs:enumeration value="ResidentForYESCell"></xs:enumeration>
+    					<xs:enumeration value="ResidentForNOCell"></xs:enumeration> 
+    					<xs:enumeration value="DesignerInfoCell"></xs:enumeration>
+    					<xs:enumeration value="CommissionCell"></xs:enumeration> 
+    					<xs:enumeration value="btnCheckoutKnows"></xs:enumeration> 
+    				</xs:restriction>
+    			</xs:simpleType>
+    		</xs:element>
+    		<xs:element name="title" type="xs:string" minOccurs="0"/>
+    		<xs:element name="actionValue"  minOccurs="0"/> 
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <!--数据实体类-->		
+    <xs:complexType name='ApplyEntryLog'>
+		<xs:sequence>			
+			<xs:element name="url" type="stringtype" /> <!--入驻状态url-->
+			<xs:element name="applyStatus " type="stringtype" />
+			<xs:element name="applyLog " type="stringtype" />
+	</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name='Commission'>
+		<xs:sequence>			
+			<xs:element name="setteDate" type="stringtype" /> <!-- 最新入账时间-->
+			<xs:element name="historySettle" type="inttype" /> <!-- 历史收益-->	
+			<xs:element name="notSettlePrice" type="inttype" /> <!-- 未结算佣金-->	
+			<xs:element name="newSettle" type="inttype" /> <!-- 最新入账-->	
+		</xs:sequence>
+	</xs:complexType>  
+	<xs:complexType name='Designer'>
+		<xs:sequence>		
+			<xs:element name="designerImgv" type="stringtype" /> <!-- 设计师头像-->	
+			<xs:element name="designerName" type="stringtype" /> <!-- 设计师名字-->	
+			<xs:element name="designerCompany" type="stringtype" /> <!-- 设计师公司-->				
+		</xs:sequence>
+	</xs:complexType>
+	<!--常量--> 
+	<xs:simpleType name="stringtype">
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+	<xs:simpleType name="inttype">
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+    
+    
+    <xs:complexType name="NormalCell">
+    	<xs:sequence>
+    		<xs:element name="lblTitle" type="xs:string"></xs:element>
+    		<xs:element name="imgLogo" type="xs:string"></xs:element>
+    	</xs:sequence>
+    </xs:complexType> 
+    <xs:complexType name="ResidentForNOCell">
+    	<xs:sequence>
+    		<xs:element name="lblStatus" type="xs:string"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ResidentForYESCell">
+    	<xs:sequence>
+    		<xs:element name="lblStatus" type="xs:string"></xs:element>
+    		<xs:element name="lblDescribe" type="xs:string"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DesignerInfoCell">
+    	<xs:sequence>
+    	    <xs:element name="lbldesignerImgvLabel" type="xs:string"></xs:element>
+    		<xs:element name="lbldesignerNameLabel" type="xs:string"></xs:element>
+    		<xs:element name="lbldesignerCompanyLabel" type="xs:string"></xs:element>
+    		<xs:element name="imgIdentification" type="xs:string"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>  
+    <xs:complexType name="CommissionCell">  
+    	<xs:sequence>
+    		<xs:element name="lblTime" type="xs:string"></xs:element>
+    		<xs:element name="lblHistoryIncome" type="xs:string"></xs:element>
+    		<xs:element name="lblNotCheckoutPrice" type="xs:string"></xs:element>
+    		<xs:element name="lblNewIncome" type="xs:string"></xs:element>
+    		<xs:element name="btnCheckoutKnows" type="xs:string"></xs:element>
+    	</xs:sequence>
+    	</xs:complexType>
+</xs:schema>

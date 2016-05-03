@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.meiqi.dsmanager.dao.impl.DataSourcesDaoImpl">
+
+
+	<resultMap id="dsInfo" type="DataSources">
+		<result property="id" column="id" />
+		<result property="name" column="ds_name" />
+		<result property="dsContent" column="ds_content" />
+		<result property="dsRemark" column="ds_remark" />
+		<result property="isDelete" column="is_delete" />
+		<result property="isEnabled" column="is_enabled" />
+		<result property="createName" column="ds_createUser" />
+		<result property="createDate" column="ds_createDate" />
+		<result property="lastName" column="ds_lastUser" />
+		<result property="lastDate" column="ds_lastDate" />
+		<result property="version" column="ds_version" />
+		<result property="cacheLevel" column="cache_level" />
+	</resultMap>
+
+	<resultMap id="dsStyleMap" type="DataSources" extends="dsInfo">
+		<collection property="dsStyle" ofType="DataSourcesStyle">
+			<id property="id" column="styleId" />
+			<result property="styleNumber" column="styleSn" />
+			<result property="stytleContent" column="styleContent" />
+			<result property="remark" column="styleRemark" />
+		</collection>
+	</resultMap>
+
+
+	<select id="selectByName_dataSources" parameterType="java.lang.String"
+		resultMap="dsStyleMap">
+select ds.id,ds.ds_name,ds.ds_content,ds.ds_remark,ds.is_delete,ds.is_enabled,ds.ds_createUser,ds.ds_createDate,ds.ds_lastUser,ds.ds_lastDate,ds.ds_version,ds.cache_level,
+tds.id as styleId,tds.style_sn as styleSn,tds.style_content as styleContent,tds.style_remark as styleRemark
+from t_dsm_data_sources ds left join t_dsm_connection_styles tdcs on ds.id=tdcs.data_sources_id  
+left join t_dsm__styles tds on tdcs.ds_styles_id=tds.id where ds.ds_name =#{name}  
+	</select>
+
+	<select id="selectByNameAndStyleNumber_dataSources"
+		parameterType="datasources" resultMap="dsStyleMap">
+		select ds.id,ds.ds_name,ds.ds_content,ds.ds_remark,ds.is_delete,ds.is_enabled,ds.ds_createUser,ds.ds_createDate,ds.ds_lastUser,ds.ds_lastDate,ds.ds_version,ds.cache_level,
+		tds.id as styleId,tds.style_sn as styleSn,tds.style_content as styleContent,tds.style_remark as styleRemark
+		from t_dsm_data_sources ds left join t_dsm_connection_styles tdcs on ds.id=tdcs.data_sources_id  
+        left join t_dsm__styles tds on tdcs.ds_styles_id=tds.id where ds.ds_name =#{name} and tds.style_sn=#{styleNumber}
+	</select>
+</mapper>

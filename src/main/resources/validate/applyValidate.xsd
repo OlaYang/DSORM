@@ -1,0 +1,49 @@
+<?xml version="1.0"?> 
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           targetNamespace="http://www.w3school.com.cn" 
+           xmlns="http://www.w3school.com.cn" 
+           elementFormDefault="qualified"> 
+    <xs:element name="apply"> 
+        <xs:complexType> 
+            <xs:sequence> 
+                <xs:element name="registerName" > 
+                   	<xs:annotation>
+							<xs:documentation >
+							请填写正确的称呼名称
+							</xs:documentation>
+						</xs:annotation>
+              <xs:simpleType>  
+               	<xs:restriction base="xs:string">  
+                	<xs:minLength value="1"/>  
+                	<xs:maxLength value="20"/>  
+                </xs:restriction>  
+            </xs:simpleType>
+            </xs:element>
+            <xs:element name="province" type="xs:integer"/> 
+            <xs:element name="city" type="xs:integer"/> 
+            <!-- <xs:element name="district" type="xs:integer"/>  -->
+            <xs:element name="budget" type="xs:string"/> 
+            <xs:element name="decorateDate"  type="xs:date" block="#all"> 
+    			      	<xs:annotation>
+							<xs:documentation >
+							请填写正确的日期格式
+							</xs:documentation>
+						</xs:annotation>
+             </xs:element>
+    		 <xs:element name="phone"  >
+    			  	<xs:annotation>
+							<xs:documentation >
+								电话号码格式不正确
+							</xs:documentation>
+						</xs:annotation>
+    			    <xs:simpleType > 
+        			<xs:restriction base="xs:integer"> 
+            			<xs:pattern value="1[3-9]\d{9}"/>
+            		</xs:restriction>
+    				</xs:simpleType>
+    		 </xs:element> 
+            </xs:sequence> 
+        </xs:complexType> 
+    </xs:element> 
+
+</xs:schema>

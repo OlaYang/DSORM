@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年4月7日 15:13:08 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.Payment" table="ecs_payment"
+		mutable="true" dynamic-update="false" dynamic-insert="false"
+		select-before-update="false" lazy="true" abstract="false">
+		<id name="payId">
+			<column name="pay_id" sql-type="tinyint(3)" not-null="true"
+				length="3" />
+		</id>
+		<properties name="pay_codeps" unique="true">
+			<property name="payCode" insert="true" update="true" lazy="false"
+				optimistic-lock="true">
+				<column name="pay_code" sql-type="varchar(20)" not-null="true"
+					length="20" />
+			</property>
+		</properties>
+		<property name="payName" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="pay_name" sql-type="varchar(120)" not-null="true"
+				length="120" />
+		</property>
+		<property name="payFee" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="pay_fee" sql-type="varchar(10)" not-null="true"
+				length="10" />
+		</property>
+		<property name="payDesc" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="pay_desc" sql-type="text" not-null="true" />
+		</property>
+		<property name="payOrder" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="pay_order" sql-type="tinyint(3)" not-null="true"
+				length="3" />
+		</property>
+		<property name="payConfig" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="pay_config" sql-type="text" not-null="true" />
+		</property>
+		<property name="enabled" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="enabled" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="isCod" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_cod" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="isOnline" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_online" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+	</class>
+</hibernate-mapping>

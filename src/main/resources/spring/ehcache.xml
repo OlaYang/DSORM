@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+	<!--如果缓存中的对象存储超过指定的缓存数量的对象存储的磁盘地址 -->
+	<diskStore path="/usr/ehcache" />
+
+	<!-- 默认cache：如果没有对应的特定区域的缓存，就使用默认缓存 -->
+	<defaultCache maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="60" timeToLiveSeconds="60" overflowToDisk="false"
+		memoryStoreEvictionPolicy="LRU" />
+	<!-- 指定区域cache：通过name指定，name对应到Hibernate中的区域名即可 -->
+<!-- 	<cache name="com.meiqi.app.pojo.Region" eternal="true" -->
+<!-- 		memoryStoreEvictionPolicy="LRU" overflowToDisk="true"> -->
+<!-- 	</cache> -->
+<!-- 	<cache name="com.meiqi.app.pojo.Region.subRegionList" eternal="true" -->
+<!-- 		memoryStoreEvictionPolicy="LRU" overflowToDisk="true"> -->
+<!-- 	</cache> -->
+
+
+</ehcache>  

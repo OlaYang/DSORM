@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.meiqi.data.dao.impl.TServiceColumnDaoImpl">
+
+	<resultMap type="TServiceColumn" id="tServiceColumnInfo">
+		<result property="serviceID" column="serviceid" />
+		<result property="sqlColumnName" column="sqlcolumnname" />
+		<result property="columnName" column="columnname" />
+		<result property="description" column="description" />
+		<result property="columnIndex" column="columnindex" />
+		<result property="formula" column="formula" />
+		<result property="condition" column="condition" />
+		<result property="isTransfer" column="isTransfer" />
+		<result property="column_type" column="column_type" />
+		<result property="parent_column" column="parent_column" />
+	</resultMap>
+
+
+	<select id="TServiceColumnListById" parameterType="java.lang.Integer"
+		resultMap="tServiceColumnInfo">
+		select serviceid ,sqlcolumnname ,columnname ,columnindex
+		,formula , `description`
+		,`condition` ,isTransfer,`column_type`,`parent_column`
+		from t_service_column where
+		serviceid=#{serviceID}
+		order by LENGTH(columnIndex) asc ,columnIndex
+		asc
+	</select>
+</mapper>
