@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年4月7日 15:13:08 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.UserAddress" table="ecs_user_address"
+		mutable="true" dynamic-update="false" dynamic-insert="false"
+		select-before-update="false" lazy="true" abstract="false">
+		<id name="consigneeId">
+			<column name="address_id" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+			<generator class="native"></generator>
+		</id>
+		<property name="addressName" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="address_name" sql-type="varchar(50)" not-null="true"
+				length="50" />
+		</property>
+		<property name="userId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="user_id" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+		</property>
+		<property name="name" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="consignee" sql-type="varchar(60)" not-null="true"
+				length="60" />
+		</property>
+		<property name="email" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="email" sql-type="varchar(60)" not-null="true"
+				length="60" />
+		</property>
+		<property name="countryId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="country" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="provinceId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="province" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="cityId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="city" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="districtId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="district" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="extendId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="extend" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="regionId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="region_id" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="detail" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="address" sql-type="varchar(120)" not-null="true"
+				length="120" />
+		</property>
+		<property name="zipcode" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="zipcode" sql-type="varchar(60)" not-null="true"
+				length="60" />
+		</property>
+		<property name="tel" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="tel" sql-type="varchar(60)" not-null="true"
+				length="60" />
+		</property>
+		<property name="phone" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="mobile" sql-type="varchar(60)" not-null="true"
+				length="60" />
+		</property>
+		<property name="signBuilding" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="sign_building" sql-type="varchar(120)" not-null="true"
+				length="120" />
+		</property>
+		<property name="bestTime" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="best_time" sql-type="varchar(120)" not-null="true"
+				length="120" />
+		</property>
+	</class>
+</hibernate-mapping>

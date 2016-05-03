@@ -1,0 +1,37 @@
+<meiQiReferrer   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="mallHome.xsd">
+    <sections>
+        <sectionName>MallSectionForHeaderImages</sectionName>
+        <sectionItems>
+            <viewName>MallSectionForHeaderImagesCell</viewName>
+        </sectionItems>
+        <sectionItems/>
+    </sections>
+    <sections>
+        <sectionName>MallSectionForCategory</sectionName>
+        <sectionItems>
+            <viewName>MallSectionForCategoryCell</viewName>
+        </sectionItems>
+        <sectionItems/>
+    </sections>
+    <sections>
+        <sectionName>MallSectionForMixAdvertisement</sectionName>
+        <sectionItems>
+            <viewName>MallSectionForMixAdvertisementCell</viewName>
+        </sectionItems>
+        <sectionItems/>
+    </sections>
+    <sections>
+        <sectionName>MallSectionForBannerAdvertisement</sectionName>
+        <sectionItems>
+            <viewName>MallSectionForBannerAdvertisementCell</viewName>
+        </sectionItems>
+        <sectionItems/>
+    </sections>
+    <sections>
+        <sectionName>MallSectionForGoods</sectionName>
+        <sectionItems>
+            <viewName>GoodsCollectionCell</viewName>
+        </sectionItems>
+        <sectionItems/>
+    </sections>
+</meiQiReferrer>

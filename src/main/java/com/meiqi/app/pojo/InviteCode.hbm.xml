@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年6月17日 19:45:08 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.InviteCode" table="lejj_invite_code"
+		mutable="true" dynamic-update="false" dynamic-insert="false"
+		select-before-update="false" lazy="true" abstract="false">
+		<id name="inviteId">
+			<column name="invite_id" sql-type="mediumint(10)" not-null="true"
+				length="10" />
+			<generator class="native" />
+		</id>
+		<property name="code" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="code" sql-type="varchar(6)" not-null="true"
+				length="6" />
+		</property>
+		<property name="receivePhone" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="receive_phone" sql-type="varchar(20)" not-null="true"
+				length="20" />
+		</property>
+		<property name="sendUserId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="send_user_id" sql-type="mediumint(10)" not-null="true"
+				length="10" />
+		</property>
+		<property name="useUserId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="use_user_id" sql-type="mediumint(10)" not-null="true"
+				length="10" />
+		</property>
+		<property name="status" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="status" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="sendTime" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="send_time" sql-type="int(11)" not-null="true"
+				length="11" />
+		</property>
+		<property name="useTime" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="use_time" sql-type="int(11)" not-null="true"
+				length="11" />
+		</property>
+	</class>
+</hibernate-mapping>

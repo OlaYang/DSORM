@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"  elementFormDefault="qualified">
+    <xs:element name="meiQiReferrer">    		
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="sections" maxOccurs="unbounded"
+					minOccurs="1" type="Section" />
+				<xs:element name="tools" type="SectionItem" maxOccurs="unbounded" minOccurs="0"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+    </xs:element>
+
+<!-- 结构模板 -->
+
+    <xs:complexType name="Section">
+    			<xs:sequence>		
+    				<xs:element name="multItems" type="xs:string" minOccurs="0"></xs:element>
+    				<xs:element name="sectionName">
+    					<xs:simpleType>
+    						<xs:restriction base="xs:string">
+    							<xs:enumeration
+    								value="OrderDetailSection">
+    							</xs:enumeration>
+    						</xs:restriction>
+    					</xs:simpleType>
+    				</xs:element>
+    				<xs:element name="sectionItems" type="SectionItem" maxOccurs="unbounded" minOccurs="1"></xs:element>
+    			</xs:sequence>
+    </xs:complexType>
+
+	<xs:complexType name="SectionItem">
+    			<xs:sequence>    			
+    				<xs:element name="multItems" type="xs:string" minOccurs="0"></xs:element>
+    				<xs:element name="viewName" minOccurs="0">
+    					<xs:simpleType>
+    						<xs:restriction base="xs:string">
+    							<xs:enumeration
+    								value="OrderDetailTitleCell">
+    							</xs:enumeration>
+    							<xs:enumeration
+    								value="OrderDetailConsigneeCell">
+    							</xs:enumeration>
+    							<xs:enumeration
+    								value="OrderDetailCartCell">
+    							</xs:enumeration>
+    							<xs:enumeration
+    								value="OrderDetailRecordCell">
+    							</xs:enumeration>
+    							<xs:enumeration
+    								value="OrderDetailPriceCell">
+    							</xs:enumeration>
+    							<xs:enumeration
+    								value="OrderDetailTotalCell">
+    							</xs:enumeration>
+    							<xs:enumeration
+    								value="OrderDetailTransportCodeCell">
+    							</xs:enumeration>
+    							<xs:enumeration
+    								value="OrderDetailTipsCell">
+    							</xs:enumeration>
+    							<xs:enumeration
+    								value="OrderDetailPayCell">
+    							</xs:enumeration>
+    							<xs:enumeration
+    								value="OrderDetailTransportInfoCell">
+    							</xs:enumeration>
+    							<xs:enumeration value="OrderDetailFooterToolView"></xs:enumeration>
+    						</xs:restriction>
+    					</xs:simpleType>
+    				</xs:element>
+    				<xs:element name="data" minOccurs="0" type="xs:anyType"></xs:element>
+    				<xs:element name="actions" type="Action" maxOccurs="unbounded" minOccurs="0"></xs:element>
+    			</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Action">
+    	<xs:sequence>
+    		<xs:element name="actionName" minOccurs="0">
+    			<xs:simpleType>
+    				<xs:restriction base="xs:string">
+    					<xs:enumeration value="goodDetailCommand"></xs:enumeration> <!-- 商品详情 -->
+    					<xs:enumeration value="payCommand"></xs:enumeration> <!-- 去支付 -->
+    					<xs:enumeration value="cancelOrderCommand"></xs:enumeration> <!-- 取消定单 -->
+    					<xs:enumeration value="confirmShipCommand"></xs:enumeration> <!-- 确认收货 -->
+    					<xs:enumeration value="buyAgainCommand"></xs:enumeration> <!-- 再次购物 或者 重新购买 -->
+    					<xs:enumeration value="deleteOrderCommand"></xs:enumeration> <!-- 删除定单 -->
+    				</xs:restriction>
+    			</xs:simpleType>
+    		</xs:element>
+    		<xs:element name="sender" minOccurs="0">
+    			<xs:simpleType>
+    				<xs:restriction base="xs:string">
+    					<xs:enumeration value="btnBlack1"></xs:enumeration>
+    					<xs:enumeration value="btnBlack2"></xs:enumeration>
+    					<xs:enumeration value="btnBlack3"></xs:enumeration>
+    					<xs:enumeration value="btnRed"></xs:enumeration>
+    					<xs:enumeration value="OrderDetailCartCell"></xs:enumeration>
+    				</xs:restriction>
+    			</xs:simpleType>
+    		</xs:element>
+    		<xs:element name="title" type="xs:string" minOccurs="0"/>
+    		<xs:element name="actionValue"  minOccurs="0"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+<!-- Data定义 -->
+
+	<!-- 订单状态栏 -->
+	<xs:complexType name="OrderDetailTitleCell">
+    	<xs:sequence>
+    		<xs:element name="lblLeft" type="xs:string"></xs:element> <!-- 订单状态标签 -->
+    		<xs:element name="lblLeftValue" type="xs:string"></xs:element> <!-- 订单状态 -->
+    		<xs:element name="lblLeftGreenValue" type="xs:string"></xs:element> <!-- 绿色订单状态 --> 
+    		<xs:element name="lblLeftValueColor" type="xs:string"></xs:element> <!-- 订单状态颜色 --> 		
+    	</xs:sequence>
+    </xs:complexType>
+
+
+	<!-- 订单收货人Cell -->
+    <xs:complexType name="OrderDetailConsigneeCell">
+    	<xs:sequence>
+    		<xs:element name="lblLeft" type="xs:string"></xs:element>
+    		<xs:element name="lblName" type="xs:string"></xs:element>
+    		<xs:element name="lblPhone" type="xs:string"></xs:element>
+    		<xs:element name="lblAddress" type="xs:string"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+	<!-- 订单商品Cell -->
+    <xs:complexType name="OrderDetailCartCell">
+    	<xs:sequence>
+    		<xs:element name="imgvLeft" type="xs:string"></xs:element>
+    		<xs:element name="lblTitle" type="xs:string"></xs:element>
+    		<xs:element name="lblPrice" type="xs:string"></xs:element>
+    		<xs:element name="lblGoodsAmount" type="xs:string"></xs:element>
+			<xs:element name="lblStandardName" type="xs:string"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+	<!-- 订单记录描述，订单号，下单时间 -->
+    <xs:complexType name="OrderDetailRecordCell">
+    	<xs:sequence>
+    		<xs:element name="lblLeftTop" type="xs:string"></xs:element>
+    		<xs:element name="lblRightTop" type="xs:string"></xs:element>
+    		<xs:element name="lblLeftBottom" type="xs:string"></xs:element>
+    		<xs:element name="lblRightBottom" type="xs:string"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+	<!-- 订单价格描述Cell -->
+    <xs:complexType name="OrderDetailPriceCell">
+    	<xs:sequence>
+    		<xs:element name="lblGoodsPriceLabel" type="xs:string"></xs:element> <!-- 商品价格标签 -->
+    		<xs:element name="lblgoodsPrice" type="xs:string"></xs:element> <!-- 商品价格 -->
+    		<xs:element name="lblTransportPriceLabel" type="xs:string"></xs:element> <!-- 运费标签 -->
+    		<xs:element name="lblTransportPrice" type="xs:string"></xs:element> <!-- 运费 -->
+    		<xs:element name="lblDiscountPriceLabel" type="xs:string"></xs:element> <!-- 折扣标签 -->
+    		<xs:element name="lblDiscountPrice" type="xs:string"></xs:element> <!-- 折扣金额 -->
+    	</xs:sequence>
+    </xs:complexType>
+
+	<!-- 实付款Cell -->
+    <xs:complexType name="OrderDetailTotalCell">
+    	<xs:sequence>
+    		<xs:element name="lblAmountLabel" type="xs:string"></xs:element> <!-- 实付款标签 -->
+    		<xs:element name="lblAmount" type="xs:string"></xs:element> <!-- 订单价格，实付款 -->
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <!-- 订单号cell -->
+    <xs:complexType name="OrderDetailTransportCodeCell">
+    	<xs:sequence>
+    		<xs:element name="lblTransportCode" type="xs:string"></xs:element> <!-- 配送单号 -->
+    		<xs:element name="lblRedStatus" type="xs:string"></xs:element> <!-- 红色的配送状态 --> 
+    		<xs:element name="lblGreenStatus" type="xs:string"></xs:element>  <!-- 绿色的配送状态 -->
+    	</xs:sequence>
+    </xs:complexType> 
+    
+    <!-- 提示界面 -->
+    <xs:complexType name="OrderDetailTipsCell">
+    	<xs:sequence>
+    		<xs:element name="lblTips" type="xs:string"></xs:element> <!-- 提示语 -->
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <!-- 支付方式Cell -->
+    <xs:complexType name="OrderDetailPayCell">
+    	<xs:sequence>
+    		<xs:element name="lblPaymentsLabel" type="xs:string"></xs:element> <!-- 支付方式标签 -->
+    		<xs:element name="lblPayments" type="xs:string"></xs:element> <!-- 支付方式 -->
+    	</xs:sequence>
+    </xs:complexType>    
+    
+    <!-- 配送信息Cell -->
+    <xs:complexType name="OrderDetailTransportInfoCell">
+    	<xs:sequence>
+    		<xs:element name="lblTransportTypeLabel" type="xs:string"></xs:element> <!-- 配送信息标签 -->
+    		<xs:element name="lblTransportType" type="xs:string"></xs:element> <!-- 配送信息 方式 -->
+    	</xs:sequence>
+    </xs:complexType>
+    
+</xs:schema>

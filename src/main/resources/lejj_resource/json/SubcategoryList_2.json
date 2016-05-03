@@ -1,0 +1,49 @@
+{
+	"subCategates": [{
+		"catId": 2,
+		"keywords": "客厅",
+		"catDesc": "客厅",
+		"subCategates": [{
+			"catId": 31,
+			"catName": "沙发",
+			"keywords": "沙发",
+			"catDesc": "沙发",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432762238976605665.png"
+		},
+		{
+			"catId": 32,
+			"catName": "茶几/边桌",
+			"keywords": "茶几/边桌",
+			"catDesc": "茶几/边桌",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432762298867738494.png"
+		},
+		{
+			"catId": 33,
+			"catName": "电视柜",
+			"keywords": "电视柜",
+			"catDesc": "电视柜",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432762366683815314.png"
+		},
+		{
+			"catId": 34,
+			"catName": "间厅柜/酒柜",
+			"keywords": "间厅柜/酒柜",
+			"catDesc": "间厅柜/酒柜",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432762423405719820.png"
+		},
+		{
+			"catId": 35,
+			"catName": "鞋柜",
+			"keywords": "鞋柜",
+			"catDesc": "鞋柜",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432762504396089223.png"
+		},
+		{
+			"catId": 36,
+			"catName": "休闲椅/凳",
+			"keywords": "休闲椅/凳",
+			"catDesc": "休闲椅/凳",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432762574307719273.png"
+		}]
+	}]
+}

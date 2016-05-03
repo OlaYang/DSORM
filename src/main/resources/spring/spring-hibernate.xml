@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.1.xsd
+    http://www.springframework.org/schema/jee 
+    http://www.springframework.org/schema/jee/spring-jee-4.1.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-4.1.xsd ">
+
+	<!-- 数据源 -->
+	<bean id="appDataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="driverClass" value="${jdbc.driverClassName}" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="minPoolSize" value="${meiqi.cpool.minPoolSize}"/>
+        <property name="initialPoolSize" value="${meiqi.cpool.initialPoolSize}"/>
+        <property name="acquireIncrement" value="${meiqi.cpool.acquireIncrement}"/>
+        <property name="acquireRetryAttempts" value="${meiqi.cpool.acquireRetryAttempts}"/>
+        <property name="acquireRetryDelay" value="${meiqi.cpool.acquireRetryDelay}"/>
+        <property name="maxPoolSize" value="${meiqi.cpool.maxPoolSize}"/>
+        <property name="maxIdleTime" value="${meiqi.cpool.maxIdleTime}"/>
+        <property name="idleConnectionTestPeriod" value="${meiqi.cpool.idleConnectionTestPeriod}"/>
+        <property name="testConnectionOnCheckin" value="${meiqi.cpool.testConnectionOnCheckin}"/>
+        <property name="testConnectionOnCheckout" value="${meiqi.cpool.testConnectionOnCheckout}"/>
+        <property name="preferredTestQuery" value="${meiqi.cpool.preferredTestQuery}"/>
+	</bean>
+	<!-- 配置sessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<!-- 数据源 -->
+		<property name="dataSource" ref="appDataSource" />
+		<!-- 数据库设置 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
+				<prop key="hibernate.format_sql">true</prop>
+
+				<!-- 自动创建|更新|验证数据库表结构。如果不是此方面的需求建议set value="none"。 -->
+				<!-- <prop key="hibernate.hbm2ddl.auto">none</prop> -->
+				<!-- <prop key="hibernate.generate_statistics">true</prop> -->
+				<!-- 强制Hibernate以更人性化的格式将数据存入二级缓存 -->
+				<prop key="hibernate.cache.use_structured_entries">true</prop>
+
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory
+				</prop>
+				<prop key="net.sf.ehcache.configurationResourceName">/spring/ehcache.xml</prop>
+
+			</props>
+		</property>
+		<!-- 映射文件 -->
+		<property name="mappingResources">
+			<list>
+				<value>com/meiqi/app/pojo/Region.hbm.xml</value>
+				<value>com/meiqi/app/pojo/Category.hbm.xml</value>
+				<value>com/meiqi/app/pojo/Goods.hbm.xml</value>
+				<value>com/meiqi/app/pojo/GoodsAttr.hbm.xml</value>
+				<value>com/meiqi/app/pojo/Attribute.hbm.xml</value>
+				<value>com/meiqi/app/pojo/Brand.hbm.xml</value>
+				<value>com/meiqi/app/pojo/Users.hbm.xml</value>
+				<value>com/meiqi/app/pojo/Role.hbm.xml</value>
+				<value>com/meiqi/app/pojo/Products.hbm.xml</value>
+				<value>com/meiqi/app/pojo/ShopConfig.hbm.xml</value>
+				<value>com/meiqi/app/pojo/Keywords.hbm.xml</value>
+				<value>com/meiqi/app/pojo/Cart.hbm.xml</value>
+				<value>com/meiqi/app/pojo/VerificationCode.hbm.xml</value>
+				<value>com/meiqi/app/pojo/UserAddress.hbm.xml</value>
+				<value>com/meiqi/app/pojo/MyClient.hbm.xml</value>
+				<value>com/meiqi/app/pojo/CollectGoods.hbm.xml</value>
+				<value>com/meiqi/app/pojo/OrderGoods.hbm.xml</value>
+				<value>com/meiqi/app/pojo/DeliveryGoods.hbm.xml</value>
+				<value>com/meiqi/app/pojo/DeliveryOrder.hbm.xml</value>
+				<value>com/meiqi/app/pojo/Order.hbm.xml</value>	
+				<value>com/meiqi/app/pojo/Feedback.hbm.xml</value>
+				<value>com/meiqi/app/pojo/Bank.hbm.xml</value>
+				<value>com/meiqi/app/pojo/MyBank.hbm.xml</value>
+				<value>com/meiqi/app/pojo/PayLog.hbm.xml</value>
+				<value>com/meiqi/app/pojo/ApplyEntryLog.hbm.xml</value>
+				<value>com/meiqi/app/pojo/InviteCode.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 事务管理 -->
+	<bean name="appTransactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- 拦截器方式配置事物 -->
+	<tx:advice id="appTransactionAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="append*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="modify*" propagation="REQUIRED" />
+			<tx:method name="edit*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="repair*" propagation="REQUIRED" />
+
+			<tx:method name="get*" propagation="SUPPORTS" />
+			<tx:method name="find*" propagation="SUPPORTS" />
+			<tx:method name="load*" propagation="SUPPORTS" />
+			<tx:method name="search*" propagation="SUPPORTS" />
+			<tx:method name="execute" propagation="SUPPORTS" />
+
+			<tx:method name="*" propagation="SUPPORTS" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<aop:pointcut id="transactionPointcut"
+			expression="execution(* com.meiqi.app..*.*(..))" />
+		<aop:advisor pointcut-ref="transactionPointcut"
+			advice-ref="appTransactionAdvice" />
+	</aop:config>
+	
+</beans>
+
+
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meiQiReferrer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="commissionList.xsd">
+	<sections>
+		<sectionName>CommissionListSection</sectionName>
+		<sectionItems>
+			<viewName>CommissionHeaderCell</viewName>
+			<data>
+				<lblHeader>${Commission.status(2,全部佣金（元）)}${Commission.status(0,未结算佣金（元）)}${Commission.status(1,已结算佣金（元）)}</lblHeader>
+				<lblPrice>${Commission.totalPrice}</lblPrice>
+			</data>
+		</sectionItems>
+		<sectionItems/>
+	</sections>
+	<sections>
+	    <multItems>${Commission.months}</multItems>
+		<sectionName>CommissionListSection</sectionName>
+		<header>
+			<data>
+				<lblHeader>${Commission.months[0].month}</lblHeader>
+			</data>
+		</header>
+		<sectionItems>
+            <multItems>${Commission.months[0].commissionInfoList}</multItems>
+            <viewName>CommissionListCell</viewName>
+            <data>
+                <lblDate>${Commission.months[0].commissionInfoList[0].Date}</lblDate>
+                <lblPrice>${Commission.months[0].commissionInfoList[0].price}</lblPrice>
+                <lblOrderNumber>${Commission.months[0].commissionInfoList[0].orderSn}</lblOrderNumber>
+                <lblOrderAmount>${Commission.months[0].commissionInfoList[0].orderAmount}</lblOrderAmount>
+                <lblSettleDate>${Commission.months[0].commissionInfoList[0].settleDate}</lblSettleDate>
+                <lblSettled>${Commission.months[0].commissionInfoList[0].status(已结算,已结算)}</lblSettled>
+                <lblSettling>${Commission.months[0].commissionInfoList[0].status(未结算,未结算)}</lblSettling>
+            </data>
+            <actions>
+            <actionName>clickCommissonCellCommand</actionName>
+                <sender>CommissionListCell</sender>
+                <actionValue>${Commission.months[0].commissionInfoList[0].commissionId}</actionValue>
+            </actions>
+            <actions/>
+        </sectionItems>
+        <sectionItems/>
+    </sections>
+</meiQiReferrer>

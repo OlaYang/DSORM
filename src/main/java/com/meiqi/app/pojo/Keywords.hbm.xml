@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年4月7日 15:13:08 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.Keywords" table="ecs_keywords"
+		mutable="true" dynamic-update="false" dynamic-insert="false"
+		select-before-update="false" lazy="true" abstract="false">
+		<composite-id>
+			<key-property name="date">
+				<column name="date" sql-type="date" not-null="true" />
+			</key-property>
+			<key-property name="searchengine">
+				<column name="searchengine" sql-type="varchar(20)" not-null="true"
+					length="20" />
+			</key-property>
+			<key-property name="keyword">
+				<column name="keyword" sql-type="varchar(90)" not-null="true"
+					length="90" />
+			</key-property>
+		</composite-id>
+		<property name="count" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="count" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.1.xsd
+    http://www.springframework.org/schema/jee 
+    http://www.springframework.org/schema/jee/spring-jee-4.1.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-4.1.xsd ">
+    <!-- 
+	<context:property-placeholder location="classpath:dbconfig.properties" />
+	-->
+	<bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">     
+	    <property name="locations">     
+	        <list>     
+	            <value>classpath:dbconfig.properties</value>
+	            <value>classpath:sysConfig.properties</value>          
+	        </list>     
+	    </property>     
+	</bean>  
+
+   <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="jdbcUrl" value="${meiqi.jdbc.url}" />
+        <property name="driverClass" value="${meiqi.jdbc.driverClassName}" />
+        <property name="user" value="${meiqi.jdbc.username}" />
+        <property name="password" value="${meiqi.jdbc.password}" />
+        <property name="minPoolSize" value="${meiqi.cpool.minPoolSize}"/>
+        <property name="initialPoolSize" value="${meiqi.cpool.initialPoolSize}"/>
+        <property name="acquireIncrement" value="${meiqi.cpool.acquireIncrement}"/>
+        <property name="acquireRetryAttempts" value="${meiqi.cpool.acquireRetryAttempts}"/>
+        <property name="acquireRetryDelay" value="${meiqi.cpool.acquireRetryDelay}"/>
+        <property name="maxPoolSize" value="${meiqi.cpool.maxPoolSize}"/>
+        <property name="maxIdleTime" value="${meiqi.cpool.maxIdleTime}"/>
+        <property name="idleConnectionTestPeriod" value="${meiqi.cpool.idleConnectionTestPeriod}"/>
+        <property name="testConnectionOnCheckin" value="${meiqi.cpool.testConnectionOnCheckin}"/>
+        <property name="testConnectionOnCheckout" value="${meiqi.cpool.testConnectionOnCheckout}"/>
+        <property name="preferredTestQuery" value="${meiqi.cpool.preferredTestQuery}"/>
+    </bean>
+ 
+
+	<!-- SqlSessionFactoryBean是一个工厂bean，它的作用就是解析配置（数据源、别名等）。 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/> -->
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath:mybatis/mapper/**/*.xml" />
+		<property name="typeAliasesPackage"
+			value="com.meiqi.mushroom.entity,com.meiqi.dsmanager.entity,com.meiqi.data.entity" />
+	</bean>
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"
+		scope="prototype">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+
+	<!-- 对数据源进行事务管理 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource" />
+
+	<!-- 拦截器方式配置事物 -->
+	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="append*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="modify*" propagation="REQUIRED" />
+			<tx:method name="edit*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="repair*" propagation="REQUIRED" />
+
+			<tx:method name="get*" propagation="SUPPORTS" />
+			<tx:method name="find*" propagation="SUPPORTS" />
+			<tx:method name="load*" propagation="SUPPORTS" />
+			<tx:method name="search*" propagation="SUPPORTS" />
+
+			<tx:method name="*" propagation="SUPPORTS" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:pointcut id="transactionPointcut"
+			expression="execution(* com.meiqi.dsmanager..*.service..*(..))" />
+		<aop:advisor pointcut-ref="transactionPointcut"
+			advice-ref="transactionAdvice" />
+	</aop:config>
+		
+	<import resource="classpath:spring/spring-hibernate.xml"/>
+	<import resource="classpath:spring/spring-common-jms.xml"/>
+	<import resource="classpath:spring/spring-jms-producer.xml"/>
+	<import resource="classpath:spring/spring-common-jms-listener.xml"/>
+	<!-- quartz配置 功能未开发完成，暂时不启动 
+	<import resource="classpath:spring/spring-jobs.xml"/>-->
+</beans>

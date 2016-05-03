@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+		<!--结构类 -->	 
+	<xs:element name="meiQiReferrer">		
+		<xs:complexType>
+			<xs:sequence>				
+				<xs:element name="tools"  maxOccurs="unbounded" minOccurs="0" type="SectionItem"/>
+				<xs:element name="sections"  maxOccurs="unbounded" minOccurs="0" type="Section"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="Section">
+		<xs:sequence>
+    		<xs:element name="multItems" type="xs:string" minOccurs="0"></xs:element>
+			<xs:element name="sectionName" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="stringtype">
+						<xs:enumeration value="MQTableBaseSection"></xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element><!--数据模型名 -->
+			<xs:element name="sectionItems" minOccurs="0" maxOccurs="unbounded" type="SectionItem" />  <!--数据模型名 -->
+			<xs:element name="actions"  minOccurs="0"  maxOccurs="unbounded" type="Action"/>  <!--事件 -->
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="SectionItem">
+		<xs:sequence>		
+    		<xs:element name="multItems" type="xs:string" minOccurs="0"></xs:element>
+			<xs:element name="viewName" minOccurs="0" >   <!--对应界面名 -->				
+				<xs:simpleType> <!--数据模型名 -->
+					<xs:restriction base="xs:string">			
+					    <xs:enumeration value="MQTitleTableViewCell"/>
+					    <xs:enumeration value="MQSingleGoodTableCell"/> 
+					    <xs:enumeration value="MQMultiGoodsTableViewCell"/>
+					    <xs:enumeration value="MQButtonActionTableViewCell"/>
+					    <xs:enumeration value="TopBarView"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="data" minOccurs="0" type="xs:anyType"/>   <!--数据模型的数据 modelName -->
+			<xs:element name="actions"  minOccurs="0"  maxOccurs="unbounded" type="Action"/>  <!--事件 -->
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Action">
+		<xs:sequence>
+			<xs:element name="actionName" minOccurs="0"> <!--事件 -->			
+				<xs:simpleType> <!--数据模型名 -->
+					<xs:restriction base="xs:string">			
+					<xs:enumeration value="showOrderDetail"></xs:enumeration> 
+					    <xs:enumeration value="goodDetailCommand"></xs:enumeration> <!-- 商品详情 -->
+    					<xs:enumeration value="payCommand"></xs:enumeration> <!-- 去支付 -->
+    					<xs:enumeration value="cancelOrderCommand"></xs:enumeration> <!-- 取消定单 -->
+    					<xs:enumeration value="confirmShipCommand"></xs:enumeration> <!-- 确认收货 -->
+    					<xs:enumeration value="buyAgainCommand"></xs:enumeration> <!-- 再次购物 或者 重新购买 -->
+    					<xs:enumeration value="deleteOrderCommand"></xs:enumeration> <!-- 删除定单 -->
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="sender" minOccurs="0">
+    			<xs:simpleType>
+    				<xs:restriction base="xs:string">
+    					<xs:enumeration value="self"></xs:enumeration>
+    					<xs:enumeration value="btnBlack"></xs:enumeration>
+    					<xs:enumeration value="btnRed"></xs:enumeration>
+    				</xs:restriction>
+    			</xs:simpleType>
+    		</xs:element>
+			<xs:element name="title" minOccurs="0" type="stringtype"/> <!--按钮的标题-->
+			<xs:element name="actionValue" minOccurs="0" /> <!--参数内容 -->
+		</xs:sequence>
+	</xs:complexType>
+	
+	<!--常量-->
+	<xs:simpleType name="stringtype">
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+	
+	<xs:simpleType name="inttype">
+		<xs:restriction base="xs:positiveInteger" />
+	</xs:simpleType>
+	
+	<xs:simpleType name="dectype">
+		<xs:restriction base="xs:decimal" />
+	</xs:simpleType>
+	
+	<xs:simpleType name="boolType">
+		<xs:restriction base="xs:boolean" />
+	</xs:simpleType>
+	
+	<xs:simpleType name="GoodsStorageType"> <!--商品存储类型-->
+		<xs:restriction base="xs:string">			
+		    <xs:enumeration value="0"/> <!--现货-->
+		    <xs:enumeration value="1"/> <!--预售货-->
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!--界面实体类-->		
+	<xs:complexType name="MQTitleTableViewCell">
+		<xs:sequence>
+			<xs:element name="leftFirstValue" type="xs:string"></xs:element>
+			<xs:element name="leftSecondValue" type="xs:string"></xs:element>
+			<xs:element name="leftThirdValue"  type="xs:string"></xs:element>
+			<xs:element name="rightRedValue"   type="xs:string" minOccurs="0">	</xs:element>
+			<xs:element name="rightBlackValue" type="xs:string" minOccurs="0">	</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="MQSingleGoodTableCell">
+		<xs:sequence>
+			<xs:element name="lblTitle" type="xs:string"></xs:element>
+			<xs:element name="lblGoodsAmount" type="xs:string"></xs:element>
+			<xs:element name="lblAmount"  type="xs:string"></xs:element>
+			<xs:element name="imgvURL"  type="xs:string"></xs:element>
+			<xs:element name="lblStandardName"  type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="MQMultiGoodsTableViewCell">
+		<xs:sequence>
+			<xs:element name="imgURLStr1" type="xs:string"></xs:element>
+			<xs:element name="imgURLStr2" type="xs:string"></xs:element>
+			<xs:element name="imgURLStr3" type="xs:string"></xs:element>
+			<xs:element name="imgURLStr4" type="xs:string"></xs:element>	
+			<xs:element name="imgURLStr5" type="xs:string"></xs:element>
+			<xs:element name="imgURLStr6" type="xs:string"></xs:element>	
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name='MQButtonActionTableViewCell'>
+		<xs:sequence>			
+			<xs:element name="leftFirstValue" type="xs:string"></xs:element>
+			<xs:element name="lelftSecondValue" type="xs:string"></xs:element>
+			<xs:element name="leftThirdValue"  type="xs:string"></xs:element>
+			<xs:element name="leftFourthValue"  type="xs:string" minOccurs="0"></xs:element>
+			<xs:element name="leftFifthValue"  type="xs:string" minOccurs="0"></xs:element>	
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name='TopBarView'>
+		<xs:sequence>			
+			<xs:element name="bbtnRight" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<!--数据实体类-->
+	<xs:complexType name='OrderItem'>
+		<xs:sequence>			
+			<xs:element name="orderId" type="inttype" /> <!--订单Id-->
+			<xs:element name="orderCode" type="stringtype"/>  <!--订单编号-->
+			<xs:element name="orderSn" type="stringtype"/>  <!--订单编号-->			
+			<xs:element name="consignee" type="Consignee"/>  <!--收货人信息-->
+			<xs:element name="carts" maxOccurs="unbounded" type="Cart"/>
+			<xs:element name="goodsPrice" type="dectype" /> <!--所有商品的价格-->
+			<xs:element name="transportPrice" type="dectype" /> <!--运费-->
+			<xs:element name="storeServicePrice" type="dectype" /> <!--实体店服务费-->
+			<xs:element name="amount" type="dectype" /> <!--订单的价格-->
+			<xs:element name="discountPrice" type="dectype"/> <!--折扣的价格-->
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name='Consignee'>
+		<xs:sequence>	
+			<xs:element name="consigneeId" type="inttype" />
+			<xs:element name="name" type="stringtype" />	
+			<xs:element name="phone" type="stringtype" />
+			<xs:element name="regionId" type="inttype" />	
+			<xs:element name="detail" type="stringtype" />			
+			<xs:element name="address" type="stringtype"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name='Region'>
+		<xs:sequence>	
+			<xs:element name="regionId" type="inttype" /> <!-- 地区Id-->	
+			<xs:element name="parentId" type="inttype" /> <!--地区父Id-->	
+			<xs:element name="regionName" type="stringtype" /> <!--地区名字-->	
+			<xs:element name="headChar" type="stringtype" /> <!--首字母-->	
+			<xs:element name="subRegionList" maxOccurs="unbounded" minOccurs='0' type="Region" /> <!--子地区-->	
+			<xs:element name="parentRegion" type="Region" /> <!--父地区-->	
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name='Cart'>
+		<xs:sequence>			
+			<xs:element name="cartId" type="inttype" /> <!-- 购物单Id-->	
+			<xs:element name="goods" maxOccurs="unbounded" minOccurs='0' type="Goods" /> <!-- 购物单商品-->	
+			<xs:element name="goodsAmount" type="inttype" /> <!-- 产品数量-->	
+			<xs:element name="amount" type="inttype" /> <!-- 总价格-->	
+			<xs:element name="invalid" type="boolType" /> <!-- 是否失效-->	
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name='Goods'>  <!--产品相关-->
+		<xs:sequence>			
+			<xs:element name="goodsId" type="inttype" /> <!-- 商品ID-->			
+			<xs:element name="images" maxOccurs="unbounded" minOccurs='0' type="Image" /> <!-- 所有的图片-->			
+			<xs:element name="cover" type="stringtype" /> <!--封面-->			
+			<xs:element name="name" type="stringtype" /> <!--名字-->			
+			<xs:element name="title" type="stringtype" /> <!-- 标题-->			
+			<xs:element name="remark" type="stringtype" /> <!-- 备注，如一些促销信息，-->			
+			<xs:element name="price" type="dectype" /> <!-- 价格-->			
+			<xs:element name="originalPrice" type="dectype" /> <!-- 原始价格-->			
+			<xs:element name="discount" type="dectype" /> <!-- 折扣 如：7.8折-->			
+			<xs:element name="goodsDesc" type="stringtype" /> <!-- 商品详情-->			
+			<xs:element name="specification" type="stringtype" /> <!-- 商品规格-->			
+			<xs:element name="packagingAndAfterSale" type="stringtype" /> <!-- 商品服务-->				
+			<xs:element name="goodsStorageType" type="GoodsStorageType" /> <!-- 商品存储类型，现货，预售货-->			
+			<xs:element name="hasStore" type="boolType" /> <!-- 是否有库存-->			
+			<xs:element name="storeAddress" /> <!-- 库存信息-->			
+			<xs:element name="standardName" type="stringtype" /> <!-- 规格名字-->			
+			<xs:element name="standards"  /> <!-- 有哪些规格-->			
+			<xs:element name="amount" type="inttype" /> <!-- 商品剩余数-->			
+			<xs:element name="soldAmount" type="stringtype" /> <!-- 商品购买数-->			
+			<xs:element name="commentCount" type="inttype" /> <!-- 评论数-->			
+			<xs:element name="comments"  maxOccurs="unbounded" minOccurs='0' /> <!-- 评论内容-->			
+			<xs:element name="recommands" maxOccurs="unbounded" minOccurs='0' type="Goods" /> <!-- 推荐商品-->			
+			<xs:element name="valid" type="boolType" /> <!-- 是否是有效商品-->			
+			<xs:element name="favorite" type="boolType" /> <!-- 是否收藏-->		
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Image">
+		<xs:sequence>		
+			<xs:element name="imageURL" type="stringtype" /> <!-- 图片URL-->	
+			<xs:element name="imageName" type="stringtype" /> <!-- 图片名字-->	
+			<xs:element name="remark" type="stringtype" /> <!-- 备注-->				
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

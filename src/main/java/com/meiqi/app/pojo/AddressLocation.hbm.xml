@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年3月25日 13:57:46 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.AddressLocation" table="ecs_store_location"
+		mutable="true" dynamic-update="false" dynamic-insert="false"
+		select-before-update="false" lazy="true" abstract="false">
+		
+		<id name="locationId">
+			<column name="location_d" sql-type="bigint" not-null="true" />
+			<generator class="native" />
+		</id>
+		
+		<property name="lat" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="lat" sql-type="varchar(10)" length="10" />
+		</property>
+		
+		<property name="lng" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="lng" sql-type="varchar(10)" length="10" />
+		</property>
+		
+		<property name="remark" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="remark" sql-type="varchar(500)" length="254" />
+		</property>
+		
+	</class>
+</hibernate-mapping>

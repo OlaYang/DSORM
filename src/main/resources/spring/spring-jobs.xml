@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- 定时接收图片的点击量、曝光量信息 -->
+	<bean id="pictureMsgAction" class="com.meiqi.openservice.action.jms.PictureMessageAction"></bean>
+	
+	 <!-- 定时清空DSORM的所有缓存和对应的memcached的缓存 -->
+	<bean id="clearAllDsormCache" class="com.meiqi.openservice.action.ClearCacheAction"></bean>
+	
+	<!-- 佣金二期 定时跑脚本 -->
+	<bean id="commissionMsgAction" class="com.meiqi.openservice.action.CommissionMsgAction"></bean>
+	
+	<!-- CRM消息 -->
+	<bean id="crmInfoAction" class="com.meiqi.openservice.action.jms.CrmInformationAction"></bean>
+	
+	<!-- Ipad用户行为 -->
+	<bean id="ipadUserAction" class="com.meiqi.openservice.action.jms.JmsAction"></bean>
+	
+	<!-- solrAction -->
+	<bean id="solrAction" class="com.meiqi.openservice.action.SolrAction"></bean>
+	
+	<!-- jmsArticleViewAction -->
+	<bean id="jmsArticleViewAction" class="com.meiqi.openservice.action.jms.JmsArticleViewAction"></bean>
+	
+	<!-- 曝光量 -->
+	<bean id="pictureExposureInfo"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="pictureMsgAction" />
+		<property name="targetMethod" value="receiveMQInfo" />
+		<property name="concurrent" value="false" />
+	</bean>
+	 
+	<bean id="pictureExposureTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="pictureExposureInfo" />
+		<property name="startDelay" value="60000"/>
+		<!--表达式，从59秒开始，每2分钟执行一次 -->
+		<property name="cronExpression" value="0 0/3 * * * ?" />
+	</bean>
+	
+	<bean id="clearAllDsormCacheJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
+	    <property name="targetObject" ref="clearAllDsormCache" />  
+	    <property name="targetMethod" value="clearAllDsormCache" />  
+	    <!--将并发设置为false-->  
+	    <property name="concurrent" value="false" />  
+	</bean>
+	<bean id="clearAllDsormCacheTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">  
+	        <property name="jobDetail" ref="clearAllDsormCacheJob" />  
+	        <property name="startDelay" value="60000"/>
+	        <property name="cronExpression" value="* * 4 * * ?" />
+    </bean>
+    
+    <!-- 佣金二期-->
+    <bean id="setCommissionJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
+	    <property name="targetObject" ref="commissionMsgAction" />  
+	    <property name="targetMethod" value="setCommission" />  
+	    <property name="concurrent" value="false" />  
+	</bean>
+
+	<bean id="setCommissionTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">  
+	        <property name="jobDetail" ref="setCommissionJob" /> 
+	        <property name="startDelay" value="60000"/> 
+	        <property name="cronExpression" value="* * 7 * * ?" />
+    </bean>
+    
+    <!-- Ipad:读取MQ中消息 -->
+    <bean id="ipadUserJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
+	    <property name="targetObject" ref="ipadUserAction" />  
+	    <property name="targetMethod" value="readIpadUserActionInfo" />  
+	    <property name="concurrent" value="false" />  
+	</bean>
+	<bean id="ipadUserTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">  
+	        <property name="jobDetail" ref="ipadUserJob" />  
+	        <property name="startDelay" value="60000"/>
+	        <property name="cronExpression" value="0 0/5 * * * ?" />
+    </bean>
+    
+    <!-- CRM:读取MQ中消息 -->
+    <bean id="crmInfoJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
+	    <property name="targetObject" ref="crmInfoAction" />  
+	    <property name="targetMethod" value="getCrmInfoFromMQ" />  
+	    <property name="concurrent" value="false" />  
+	</bean>
+	<bean id="crmInfoTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">  
+	        <property name="jobDetail" ref="crmInfoJob" />  
+	        <property name="startDelay" value="60000"/>
+	        <property name="cronExpression" value="0 0/5 * * * ?" />
+    </bean>
+    
+    <!-- 微信扫码CRM:读取MQ中消息 -->
+    <bean id="crmInfoJob1" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
+	    <property name="targetObject" ref="crmInfoAction" />  
+	    <property name="targetMethod" value="getWeinxinScanCodeCrmInfoFromMQ" />  
+	    <property name="concurrent" value="false" />  
+	</bean>
+	<bean id="crmInfoTrigger1" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">  
+	        <property name="jobDetail" ref="crmInfoJob1" />  
+	        <property name="startDelay" value="60000"/>
+	        <property name="cronExpression" value="0 0/5 * * * ?" />
+    </bean>
+    
+    
+     <!-- 更新solr数据  type(1=更新app_goods_solr的total_ready_num（有货字段）)-->
+    <bean id="solrUpdateJob_type_1" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
+	    <property name="targetObject" ref="solrAction" />  
+	    <property name="targetMethod" value="solrDataUpdateForType1" />  
+	    <property name="concurrent" value="false" />  
+	</bean>
+	<bean id="solrUpdateTrigger_type_1" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">  
+	        <property name="jobDetail" ref="solrUpdateJob_type_1" />  
+	        <property name="startDelay" value="60000"/>
+	        <property name="cronExpression" value="0 0/30 * * * ?" />
+    </bean>
+    
+    <!-- JmsArticleViewAction 文章页浏览数加1-->
+   <bean id="jmsUpdateArticleViewJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
+	    <property name="targetObject" ref="jmsArticleViewAction" />  
+	    <property name="targetMethod" value="updateArticleViewIntoDB" />  
+	    <property name="concurrent" value="false" />  
+	</bean>
+	<bean id="jmsUpdateArticleViewTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">  
+	        <property name="jobDetail" ref="jmsUpdateArticleViewJob" />  
+	        <property name="startDelay" value="60000"/>
+	        <property name="cronExpression" value="0 0/10 * * * ?" />
+    </bean>
+    
+	<bean id="startQuertz" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">  
+	        <property name="triggers">  
+	            <list>  
+	            <ref bean="clearAllDsormCacheTrigger"/>
+	            <ref bean="pictureExposureTrigger"/>
+	            <ref bean="setCommissionTrigger"/>
+	            <ref bean="ipadUserTrigger"/>
+	            <ref bean="crmInfoTrigger"/>
+	            <ref bean="crmInfoTrigger1"/>
+	            <ref bean="solrUpdateTrigger_type_1"/>
+	            <ref bean="jmsUpdateArticleViewTrigger"/>
+	            </list>  
+	    </property>  
+
+	</bean>  
+	 
+</beans>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年3月25日 13:57:46 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.Store" table="ecs_shop_list"
+		mutable="true" dynamic-update="false" dynamic-insert="false"
+		select-before-update="false" lazy="true" abstract="false">
+		<id name="storeId">
+			<column name="shop_id" sql-type="bigint" not-null="true" />
+			<generator class="native" />
+		</id>
+		<many-to-one name="region" class="com.meiqi.app.pojo.Region"
+			unique="true" lazy="false" outer-join="false" update="false" insert="false">
+			<column name="region_id" sql-type="bigint" not-null="false" />
+		</many-to-one>
+		<!--实体店经纬度
+		<property name="ads" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="ads" sql-type="varchar(50)" length="50" />
+		</property>
+		 -->
+		<property name="storeName" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="name" sql-type="varchar(60)" length="60" />
+		</property>
+		<property name="tel" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="tel" sql-type="varchar(20)" length="15" />
+		</property>
+		<property name="phone" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="phone" sql-type="varchar(20)" length="11" />
+		</property>
+		<property name="addressDetail" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="address" sql-type="varchar(500)" length="254" />
+		</property>
+	</class>
+</hibernate-mapping>

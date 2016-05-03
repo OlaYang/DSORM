@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年4月24日 18:47:23 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.MyClient" table="lejj_my_client"
+		mutable="true" dynamic-update="false" dynamic-insert="false"
+		select-before-update="false" lazy="true" abstract="false">
+		<id name="myClientId">
+			<column name="my_client_id" sql-type="int(10)" not-null="true"
+				length="10" />
+			<generator class="native"></generator>
+		</id>
+		<many-to-one name="consignee" class="com.meiqi.app.pojo.UserAddress"
+			unique="true" lazy="false" outer-join="false" update="false" insert="true"
+			cascade="save-update,persist,delete">
+			<column name="consignee_id" sql-type="int(10)" not-null="false" />
+		</many-to-one>
+		<property name="designerId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="designer_id" sql-type="int(10)" not-null="true"
+				length="10" />
+		</property>
+		<property name="addTime" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="add_time" sql-type="int(11)" length="11" />
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.meiqi.data.dao.impl.TServiceDBDaoImpl">
+
+	<resultMap type="TServiceDB" id="tServiceDBInfo">
+		<result property="dbID" column="dbid" />
+		<result property="driver" column="driver" />
+		<result property="url" column="url" />
+		<result property="user" column="user" />
+		<result property="password" column="password" />
+		<result property="pool" column="pool" />
+	</resultMap>
+
+	<select id="SelectTServiceDB" parameterType="hashmap"
+		resultMap="tServiceDBInfo">
+		select * from t_service_db where 1=1
+		<if test="dbID != null">
+			and dbid=#{dbID}
+		</if>
+	</select>
+
+</mapper>
+        
+        

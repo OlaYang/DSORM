@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年4月24日 18:47:23 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.PayLog" table="ecs_pay_log"
+		mutable="true" dynamic-update="false" dynamic-insert="false"
+		select-before-update="false" lazy="true" abstract="false">
+		<id name="payLogId">
+			<column name="log_id" sql-type="int(10)" not-null="true"
+				length="10" />
+			<generator class="native"></generator>
+		</id>
+		<property name="orderId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="order_id" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+		</property>
+		<property name="orderAmount" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="order_amount" sql-type="decimal(10,2)" not-null="true"
+				length="10" precision="2" />
+		</property>
+		<property name="orderType" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="order_type" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="isPaid" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_paid" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="addTime" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="add_time" sql-type="int(10)" not-null="true"
+				length="10" />
+		</property>
+		<property name="payType" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="pay_type" sql-type="int(3)" not-null="true"
+				length="3" />
+		</property>
+		<property name="transactionId" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="transaction_id" sql-type="varchar(50)" not-null="true"
+				length="50" />
+		</property>
+		<property name="remark" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="remark" sql-type="varchar(100)" not-null="true"
+				length="100" />
+		</property>
+
+
+
+
+
+	</class>
+</hibernate-mapping>

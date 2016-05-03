@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年4月7日 15:13:08 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.Brand" table="ecs_brand" mutable="true"
+		dynamic-update="false" dynamic-insert="false" select-before-update="false"
+		lazy="true" abstract="false">
+		<id name="brandId">
+			<column name="brand_id" sql-type="smallint(5)" not-null="true"
+				length="5" />
+			<generator class="native" />
+		</id>
+		<property name="brandName" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="brand_name" sql-type="varchar(60)" not-null="true"
+				length="60" />
+		</property>
+		<property name="brandLogo" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="brand_logo" sql-type="varchar(80)" not-null="true"
+				length="80" />
+		</property>
+		<property name="brandDesc" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="brand_desc" sql-type="text" not-null="true" />
+		</property>
+		<property name="siteUrl" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="site_url" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="sortOrder" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="sort_order" sql-type="tinyint(3)" not-null="true"
+				length="3" />
+		</property>
+		<property name="isShow" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_show" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+	</class>
+</hibernate-mapping>

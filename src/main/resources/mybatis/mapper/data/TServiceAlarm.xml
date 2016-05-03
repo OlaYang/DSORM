@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.meiqi.data.dao.impl.TServiceAlarmDaoImpl">
+
+	<resultMap type="TServiceAlarm" id="tServiceAlarmInfo">
+		<result property="logid" column="logid" />
+		<result property="sname" column="sname" />
+		<result property="msg" column="msg" />
+	</resultMap>
+
+	<insert id="insertTServiceAlarm" useGeneratedKeys="true"
+		parameterType="hashmap">
+		<selectKey resultType="Long" keyProperty="id" order="AFTER">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into t_service_alarm(sname, msg) values(#{sname}, #{msg})
+	</insert>
+</mapper>

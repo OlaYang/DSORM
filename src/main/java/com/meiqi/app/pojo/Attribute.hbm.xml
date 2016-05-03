@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年4月7日 15:13:08 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.Attribute" table="ecs_attribute"
+		mutable="true" dynamic-update="false" dynamic-insert="false"
+		select-before-update="false" lazy="true" abstract="false">
+		<id name="attrId">
+			<column name="attr_id" sql-type="smallint(5)" not-null="true"
+				length="5" />
+			<generator class="native"></generator>
+		</id>
+		<property name="catId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="cat_id" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="attrName" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="attr_name" sql-type="varchar(60)" not-null="true"
+				length="60" />
+		</property>
+		<property name="attrInputType" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="attr_input_type" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="attrType" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="attr_type" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="attrValues" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="attr_values" sql-type="text" not-null="true" />
+		</property>
+		<property name="attrIndex" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="attr_index" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="sortOrder" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="sort_order" sql-type="tinyint(3)" not-null="true"
+				length="3" />
+		</property>
+		<property name="isLinked" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_linked" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="attrGroup" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="attr_group" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="isSell" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_sell" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+	</class>
+</hibernate-mapping>

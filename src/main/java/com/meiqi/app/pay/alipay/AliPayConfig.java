@@ -1,0 +1,15 @@
+package com.meiqi.app.pay.alipay;
+
+public interface AliPayConfig {
+	// 支付宝账号
+	String SELLER_EMAIL = "ytlj@lejj.com";
+	String SIGN_TYPE = "RSA";
+	// 字符编码格式 目前支持 utf-8
+	String INPUT_CHARSET = "utf-8";
+	// 合作身份者ID，以2088开头由16位纯数字组成的字符串
+	String PARTNER = "2088021700341695";
+	// 商户的私钥, 如果签名方式设置为“0001”时，请设置该参数
+	String PRIVATE_KEY = "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAPB8jXce+xomrAnBN/JGfs7pJ7IC7apsnkYZRTZrBnraNFRIP3fOdVxjjNt+/lTcKxMu+xlKIcgTTwm3qMvbxYnDv53r8SonojYPeSElcDeWFbP+9JjDCoinzbQFb4N7wWWPx+kmv0NjlrsnFY1k6FZzVKrrG67qqvMF4y04ysitAgMBAAECgYEAtEvNC5fQjiScKpwPw7YScDHhLtZ/NJxGdSuQ9mF69DQPs3iPDNVeq6t++TjWmOyP5sv8OVOYzBWd1h05kczs5Q4uzTxRAnGbxilKVegyAEs9JxZAz1ErYiqJEk2/5v4XqgYxBaOIygiSoedsDU9GlfZOvGAw4ltjl9ZxlEjOKYECQQD4gpFsdIdcnHEexzy+/DKLf8ZvXFYQVtVtFT2PPoHeiaNbUSUtABWkr6p2RgyEoorTFnTpEqxUB2fGtwRwTta9AkEA97wT2VoRNIy0kGgz5TKw7mFa3U0EN4ni3KCocchReguV6IDqfJ2LKy2pVwx680e3fSn93jP4jVVnnnMzzlaQsQJAa+UUiogVdSofGwPZ5fnNYC+70gG/BB0PUOsV7SlwbVRI7o7OmzkcLIJweiVzrep8Z6WqYL9QvrLwZaB0duZj6QJALsg9l1YC2cGYd4y2ABpKfzmzRwc8PKC1TqSoKpSBjmKRtI5juZSmq0i8KcwZi8eHRwOfBU8bKNVv8+QdbGG8gQJBAMKpQNhsqRtOA7u0wgQeEMoQvW6lkfHrBkLJeUG9nEoKNL/ITa5nX70eGBSMyTzSwsy3X/Vfm4yKnL69j6BJwIw=";
+	// 支付宝的公钥， 如果签名方式设置为“0001”时，请设置该参数
+    String PUBLIC_KEY  = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB";
+}

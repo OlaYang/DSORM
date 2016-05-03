@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+                      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+	<!-- RMI远程访问 -->
+	<bean id="/dataService" class="com.meiqi.dsmanager.rmi.impl.RmiDataService" />
+
+	<bean id="/solrService" class="com.meiqi.dsmanager.rmi.impl.RmiSolrService" />
+
+	<bean id="/mushroomService" class="com.meiqi.dsmanager.rmi.impl.RmiMushroomService" />
+
+	<bean id="/loginService" class="com.meiqi.dsmanager.rmi.impl.RmiLoginService" />
+
+	<bean id="/previewService" class="com.meiqi.dsmanager.rmi.impl.RmiPreviewService" />
+
+	<bean id="/userListService" class="com.meiqi.dsmanager.rmi.impl.RmiUserListService" />
+
+	<bean id="/sendMessageService" class="com.meiqi.dsmanager.rmi.impl.RmiSendMessageService" />
+
+	<bean id="/pushService" class="com.meiqi.dsmanager.rmi.impl.RmiPushService" />
+
+	<!-- HTTP远程访问 -->
+	<!-- <bean id="httpLoginService" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter"> 
+		<property name="service" ref="httpLoginServiceImpl" /> <property name="serviceInterface" 
+		value="com.meiqi.dsmanager.http.IHttpLoginService" /> </bean> <bean id="urlMapping" 
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
+		<property name="mappings"> <props> <prop key="/httpLoginService.do">httpLoginService</prop> 
+		</props> </property> </bean> -->
+</beans>

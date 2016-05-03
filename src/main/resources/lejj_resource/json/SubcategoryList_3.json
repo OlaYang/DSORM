@@ -1,0 +1,35 @@
+{
+	"subCategates": [{
+		"catId": 3,
+		"keywords": "餐厅",
+		"catDesc": "餐厅",
+		"subCategates": [{
+			"catId": 38,
+			"catName": "餐桌",
+			"keywords": "餐桌",
+			"catDesc": "餐桌",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432762675235613505.png"
+		},
+		{
+			"catId": 39,
+			"catName": "餐椅",
+			"keywords": "餐椅",
+			"catDesc": "餐椅",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432762734552463971.png"
+		},
+		{
+			"catId": 40,
+			"catName": "餐边柜",
+			"keywords": "餐边柜",
+			"catDesc": "餐边柜",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432762845577831171.png"
+		},
+		{
+			"catId": 41,
+			"catName": "餐厅套装",
+			"keywords": "餐厅套装",
+			"catDesc": "餐厅套装",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432762906522734849.png"
+		}]
+	}]
+}

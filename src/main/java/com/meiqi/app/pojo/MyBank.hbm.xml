@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年4月7日 15:13:08 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.MyBank" table="lejj_my_bank"
+		mutable="true" dynamic-update="false" dynamic-insert="false"
+		select-before-update="false" lazy="true" abstract="false">
+		<id name="myBankId">
+			<column name="my_bank_id" sql-type="int(10)" not-null="true"
+				length="10" />
+			<generator class="native" />
+		</id>
+		<property name="userId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="user_id" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+		</property>
+		<property name="bankId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="bank_id" sql-type="int(10)" not-null="true"
+				length="10" />
+		</property>
+		<property name="userRealName" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="user_real_name" sql-type="varchar(60)" not-null="true"
+				length="60" />
+		</property>
+		<property name="cardNumber" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="card_number" sql-type="varchar(20)" not-null="true"
+				length="20" />
+		</property>
+		<property name="addTime" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="add_time" sql-type="int(10)" not-null="true"
+				length="10" />
+		</property>
+	</class>
+</hibernate-mapping>

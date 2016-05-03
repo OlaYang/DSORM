@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.meiqi.mushroom.dao.impl.TMushroomDBDaoImpl">
+
+	<resultMap type="com.meiqi.mushroom.entity.TMushroomDB" id="resultTMushroomDB">
+		<result property="did" column="did" />
+		<result property="nid" column="nid" />
+		<result property="name" column="name" />
+		<result property="dbSplitField" column="db_split_field" />
+		<result property="dbSplitNum" column="db_split_num" />
+		<result property="split" column="split" />
+		<result property="pool" column="pool" />
+	</resultMap>
+
+
+	<select id="TMushroomDBList" resultMap="resultTMushroomDB">
+		select * from t_mushroom_db
+	</select>
+	
+	<select id="TMushroomDBById" parameterType="java.lang.Integer" resultMap="resultTMushroomDB">
+		select * from t_mushroom_db WHERE did=#{id}
+	</select>
+</mapper>

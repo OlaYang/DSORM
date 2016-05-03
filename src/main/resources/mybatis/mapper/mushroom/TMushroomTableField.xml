@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.meiqi.mushroom.dao.impl.TMushroomTableFieldDaoImpl">
+
+	<resultMap type="com.meiqi.mushroom.entity.TMushroomTableField"
+		id="resultTMushroomTableField">
+		<result property="tid" column="tid" />
+		<result property="serviceField" column="service_field" />
+		<result property="tableField" column="table_field" />
+	</resultMap>
+
+	<select id="TMushroomTableFieldList" parameterType="int"
+		resultMap="resultTMushroomTableField">
+		select * from t_mushroom_table_field where tid=#{tid}
+	</select>
+</mapper>

@@ -1,0 +1,28 @@
+{
+	"subCategates": [{
+		"catId": 4,
+		"keywords": "书房",
+		"catDesc": "书房",
+		"subCategates": [{
+			"catId": 43,
+			"catName": "书桌",
+			"keywords": "书桌",
+			"catDesc": "书桌",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432762997983505772.png"
+		},
+		{
+			"catId": 44,
+			"catName": "书柜",
+			"keywords": "书柜",
+			"catDesc": "书柜",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432763057224923289.png"
+		},
+		{
+			"catId": 45,
+			"catName": "书椅",
+			"keywords": "书椅",
+			"catDesc": "书椅",
+			"imageURL": "http://image.lejj.com/data/afficheimg/1432763129201770781.png"
+		}]
+	}]
+}

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hibernate XML Mapping File -->
+<!-- Author: Administrator -->
+<!-- Modified: 2015年4月7日 15:13:08 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true">
+	<class name="com.meiqi.app.pojo.Goods" table="ecs_goods" mutable="true"
+		dynamic-update="false" dynamic-insert="false" select-before-update="false"
+		lazy="true" abstract="false">
+		<cache usage="read-write" />
+		<id name="goodsId">
+			<column name="goods_id" sql-type="mediumint(8)" not-null="true"
+				length="8" />
+			<generator class="native" />
+		</id>
+		<property name="catId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="cat_id" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="goodsSn" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="goods_sn" sql-type="varchar(60)" not-null="true"
+				length="60" />
+		</property>
+		<property name="name" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="goods_name" sql-type="varchar(120)" not-null="true"
+				length="120" />
+		</property>
+		<property name="goodsNameStyle" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="goods_name_style" sql-type="varchar(60)"
+				not-null="true" length="60" />
+		</property>
+		<property name="clickCount" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="click_count" sql-type="int(10)" not-null="true"
+				length="10" />
+		</property>
+		<property name="brandId" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="brand_id" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="providerName" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="provider_name" sql-type="varchar(100)" not-null="true"
+				length="100" />
+		</property>
+		<property name="amount" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="goods_number" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="goodsWeight" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="goods_weight" sql-type="decimal(10,3)" not-null="true"
+				length="10" precision="3" />
+		</property>
+		<property name="originalPrice" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="market_price" sql-type="decimal(10,2)" not-null="true"
+				length="10" precision="2" />
+		</property>
+		<property name="discount" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="discount" sql-type="decimal(5,2)" not-null="true"
+				length="5" precision="2" />
+		</property>
+		<property name="price" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="shop_price" sql-type="decimal(10,2)" not-null="true"
+				length="10" precision="2" />
+		</property>
+		<property name="promotePrice" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="promote_price" sql-type="decimal(10,2)"
+				not-null="true" length="10" precision="2" />
+		</property>
+		<property name="promoteStartDate" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="promote_start_date" sql-type="int(11)" not-null="true"
+				length="11" />
+		</property>
+		<property name="promoteEndDate" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="promote_end_date" sql-type="int(11)" not-null="true"
+				length="11" />
+		</property>
+		<property name="warnNumber" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="warn_number" sql-type="tinyint(3)" not-null="true"
+				length="3" />
+		</property>
+		<property name="keywords" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="keywords" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="remark" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="goods_brief" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="goodsDesc" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="goods_desc" sql-type="text" not-null="true" />
+		</property>
+		<property name="descUrl" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="desc_url" sql-type="varchar(100)" not-null="true"
+				length="100" />
+		</property>
+		<property name="specification" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="specification" sql-type="varchar(100)" not-null="true"
+				length="100" />
+		</property>
+		<property name="packagingAndAfterSale" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="packaging_afterSale" sql-type="varchar(255)"
+				not-null="true" length="255" />
+		</property>
+		<property name="goodsThumb" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="goods_thumb" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="cover" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="goods_img" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="originalImg" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="original_img" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="isReal" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_real" sql-type="tinyint(1)" not-null="true"
+				length="3" />
+		</property>
+		<property name="extensionCode" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="extension_code" sql-type="varchar(30)" not-null="true"
+				length="30" />
+		</property>
+		<property name="isOnSale" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_on_sale" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="isAloneSale" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="is_alone_sale" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="isShipping" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_shipping" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="integral" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="integral" sql-type="int(10)" not-null="true"
+				length="10" />
+		</property>
+		<property name="addTime" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="add_time" sql-type="int(10)" not-null="true"
+				length="10" />
+		</property>
+		<property name="sortOrder" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="sort_order" sql-type="smallint(4)" not-null="true"
+				length="4" />
+		</property>
+		<property name="isDelete" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_delete" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="isBest" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_best" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="isNew" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_new" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="isHot" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_hot" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="isPromote" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_promote" sql-type="tinyint(1)" not-null="true"
+				length="1" />
+		</property>
+		<property name="bonusTypeId" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="bonus_type_id" sql-type="tinyint(3)" not-null="true"
+				length="3" />
+		</property>
+		<property name="lastUpdate" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="last_update" sql-type="int(10)" not-null="true"
+				length="10" />
+		</property>
+		<property name="goodsType" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="goods_type" sql-type="smallint(5)" not-null="true"
+				length="5" />
+		</property>
+		<property name="sellerNote" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="seller_note" sql-type="varchar(255)" not-null="true"
+				length="255" />
+		</property>
+		<property name="giveIntegral" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="give_integral" sql-type="int(11)" not-null="true"
+				length="11" />
+		</property>
+		<property name="rankIntegral" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="rank_integral" sql-type="int(11)" not-null="true"
+				length="11" />
+		</property>
+		<property name="suppliersId" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="suppliers_id" sql-type="java.lang.Integer" length="5" />
+		</property>
+		<property name="isCheck" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_check" sql-type="tinyint(1)" length="1"
+				not-null="false" />
+		</property>
+
+		<property name="goodsStorageType" insert="true" update="true"
+			lazy="false" optimistic-lock="true">
+			<column name="goods_storage_type" sql-type="tinyint(1)"
+				not-null="true" length="1" />
+		</property>
+
+		<!-- 收藏数 -->
+		<property name="collectNumber" insert="true" update="true" lazy="false"
+				  optimistic-lock="true">
+			<column name="collect_number" sql-type="smallint(5)" length="5" />
+		</property>
+
+		<!-- 是否列表显示 -->
+		<property name="isShow" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="is_show" sql-type="tinyint(1)" length="1" />
+		</property>
+		<!-- 店铺的运输服务信息 -->
+		<property name="transportService" insert="true" update="true" lazy="false"
+			optimistic-lock="true">
+			<column name="transport_service" sql-type="varchar(20)" length="20" />
+		</property>
+		
+	</class>
+</hibernate-mapping>
